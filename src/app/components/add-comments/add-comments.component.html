@@ -1,0 +1,41 @@
+
+<div class="mainDiv">
+    <div class="showPreviousComments">
+        <a (click)='showPreviousComments()'> Show  previous comments</a>
+    </div>
+    <div class="commentContainer">
+            <div *ngFor='let comment of comments'>
+                    <div class="commentDiv " *ngIf='comment.parent==null'>
+                            <img class="atheletImage " [src]="comment.image" alt="">
+                            <div>
+                                <div class="commentHeader">
+                                      <h6>{{comment.userName}}</h6>
+                                       <span class="time">
+                                            <i class="bi bi-watch"></i>
+                                            <span> 1h</span>
+                                      </span>
+                                </div>
+                                <div class="commentContent"> {{comment.body}}</div>
+                                <div class="likeComment">
+                                      <i  (click)='like()' class="bi bi-hand-thumbs-up like"></i>
+                                      <a #Reply (click)='reply(comment.id,replySection,Reply,Back)'>reply</a>
+                                      <a #Back (click)='back(replySection,Reply,Back)' style="display: none" >back</a>
+        
+                                </div>
+                            </div>
+                        </div>
+                        <div  #replySection>
+                           
+                        </div>
+            </div>
+    </div>
+    
+   
+    <div class="writeCommentSection">
+        <div>
+            <textarea #textarea (input)="commentInput(textarea)" (keyup)='addComment($event,textarea)' class="commentTextarea"   placeholder="write comment ..."></textarea>
+            <i class="bi bi-emoji-smile emojiIcom"></i>        
+        </div>
+    </div>
+</div>
+

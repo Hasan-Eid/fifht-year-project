@@ -1,0 +1,85 @@
+<button  (click)='goToTopScroll()' class="goTopBtn">
+        <i class="bi bi-chevron-double-up"></i>
+</button>
+<div #mainDiv class="mainDiv">
+    <div  class="showSection">
+
+        <div #sharingMyIdeasDiv (click)='showCreationDiv()' class="createPostLink">
+                <a >You have a new sport iformation ? share it</a>
+            </div>
+            <div #createPost  class="createPost" >
+                        <div class="postParts">
+                            <div class="writtenContentDiv">
+                                {{postContent}}
+                            </div>
+                            <div class="selectedImagesDiv">
+                                    <img   [src]="im" *ngFor='let im of imagesURLs'>
+                            </div>
+                            
+                        </div>
+                        <div class="postButtons">
+                                <div>
+                                     <button (click)="images.click()" >image</button>
+                                     <input type="file" (input)="storeImages()" #images accept="image/*" multiple hidden  >
+                                </div>
+                                <div>
+                                     <button (click)='showPostContent()' >content</button>
+                                </div>
+                                <div>
+                                     <button (click)='publish()' >publish</button>
+                                </div>
+                                <div>
+                                        <button (click)='publishingCancle()' >Cancle</button>
+                                </div>
+                        </div>
+                        
+             </div>
+            
+            <div class="storiesDiv">
+                    <div>
+                            <img class='user' src="../../../assets/r1.jpg"  >
+                            <span class="yourStory" > your Story </span>
+                    </div>
+                    <div *ngFor='let story of stories'>
+                            <img #imgStory (click)='showStory(imgStory)' class='user' [src]="'../../../assets/'+story"  >
+                            <span class="storyName"> hasan eid </span>
+                    </div>
+                    
+            </div>
+            <div class="storyShowSection">
+                
+               <img class="imageStory" src="" alt="">
+               <div class="timeline2">
+                
+               </div>
+               <div class="timeline"></div>
+               <a (click)='close()' class="close" >
+                    <span aria-hidden="true">&times;</span>
+
+               </a>
+            </div>
+            <div class="postsSection">
+                <app-post *ngFor="let post of posts" [post]="post">
+                </app-post>
+            </div>
+            
+    </div>
+    
+    
+</div>
+<div class="blurDiv"></div>
+<ng-template    #postContentModal let-modal>
+                <div class="modal-header" >
+                    <h4 class="modal-title" id="modal-basic-title">Post Content</h4>
+                </div>
+                <div class="modal-body" >
+                    <textarea #postContent class="postContentTextarea" cols="45" rows="4"></textarea>
+                </div>
+                <div class="modal-footer">
+                      <button type="button" class="btn btn-danger" (click)="modal.close('cancle click')">Close</button>
+                      <button class="btn btn-success" (click)='addPostContent(postContent)'>Add</button>
+                </div>
+</ng-template>
+        
+
+ 

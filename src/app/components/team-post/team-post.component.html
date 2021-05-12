@@ -1,0 +1,109 @@
+<div>
+        <div  >
+              <div class="post">
+                      <div class="postHearder">
+                          <img  class='atheletImage' src="../../../assets/user.png" >
+                          <div class="athleteName">
+                            <h6>Hasan Eid</h6>
+                            <span class="time">
+                                    <i class="bi bi-watch"></i>
+                                    <span> 1h</span>
+                            </span>
+                          </div>
+                          <div  ngbDropdown class="optionsMenu">
+                                <i class="bi bi-three-dots optionsIcon" id="dropdownBasic1" ngbDropdownToggle></i>
+
+                                <div  ngbDropdownMenu class="options" aria-labelledby="dropdownBasic1">
+                                   <button (click)='deletePost()' ngbDropdownItem>Delete post</button>
+                                </div>
+                          </div>
+                      </div>
+                      <div  class="postContent" [class]="{emptyText:post.content=='',notEmptyText:post.content!=''}" >
+                          
+                           <span #secondSectionOfPost class="secondSectionOfPost" >
+                                  <span *ngIf='post.images.length>0'  class="imageSection">
+                                        <div (click)='goTocarousel(secondSectionOfPost,viewMoreDiv)' class="imageSectionContent"  *ngIf='post.images.length>=3' >
+                                           <div>
+                                               <a *ngFor='let im of post.images|fisrtImages;  let i=index; let o= odd; let e=even;'>
+                                                   <img class="postImages alotOfPostImages"[class.postImagesClass]="i!=0"	  *ngIf='e' [src]="im" >
+                                               </a>
+                                           </div>
+                                           <div class="leftImages" >
+                                               <a *ngFor='let im of post.images|fisrtImages;let i=index; let e=even;'>
+                                                   <img class="postImages alotOfPostImages" [class.postImagesClass]="i!=1" *ngIf='!e' [src]="im" >
+                                               </a>
+                                           </div>
+                                           <span class="restImages" *ngIf='post.images.length>4'> <span>+</span> {{post.images.length-4}}</span>
+          
+                                        </div>
+                                        <div (click)='goTocarousel(secondSectionOfPost,viewMoreDiv)' [class]="{bigImageSectionContent:post.content==''} "  class="imageSectionContent"  *ngIf='post.images.length==2' >
+                                          <img class="postImages" [class]="{bigBinaryPostImages:post.content=='',binaryPostImages:post.content!=''} "  [src]="post.images[0]" >
+                                          <img class="postImages"[class]="{bigBinaryPostImages:post.content=='',binaryPostImages:post.content!=''} "  style="margin-left: -40px"  [src]="post.images[1]" >
+                                        </div>
+                                        <div  class="imageSectionContent" [class]="{bigImageSectionContent:post.content==''} " *ngIf='post.images.length==1' >
+                                          <img (click)='goTocarousel(secondSectionOfPost,viewMoreDiv)' class="postImages" [class]="{bigOnePostImage:post.content=='',onePostImage:post.content!=''} "  [src]="post.images[0]" >
+                                        </div>
+                                  </span>
+                                  
+                                  <p #content id='content' [class.hideElement]="post.content==''" class="content" >
+                                      {{post.content}}
+                                  </p>
+                                  
+                          </span>
+                          <div  #viewMoreDiv (click)='viewMore(content,aViewMore)' [class]="{hideElement:!contentHeight(content),shown:contentHeight(content)}"  class="viewMore">
+                              <a #aViewMore >.. view More ..</a>                            
+                          </div> 
+                          <ngb-carousel *ngIf="post.images&&showImages" [interval]='5000'>
+                                  <ng-template *ngFor='let im of post.images' ngbSlide>
+                                      <div class="picsum-img-wrapper">
+                                        <img style="object-fit: contain" width="575"  height="350" [src]="im" alt="Random third slide">
+                                      </div>
+                                      <div class="carousel-caption">
+                                          <a (click)='back(secondSectionOfPost,viewMoreDiv,content)' class="arrow">
+                                                  <i class="bi bi-arrow-left"></i>
+                                          </a>
+                                      </div>
+                                    </ng-template>
+                          </ngb-carousel>
+                              
+                          
+                                                            
+                      </div>
+              </div>
+              <div class="postIcons" style="clip-path: url('#clipping2')">
+                      
+                      <div #lk>
+                          <span class="num">{{post.likes}}</span>
+                          <i  (click)='like(lk)' class="bi bi-hand-thumbs-up"></i>
+                      </div>
+                      <div>
+                          <span class="num">{{post.comments.num}}</span>
+                          <i (click)='showComment(post.id)'class="bi bi-chat-fill"></i>
+                      </div>
+                      
+                      
+              </div>
+              <div style="width: 616px">
+               <app-add-comments [postID]="post.id" ></app-add-comments>
+              </div>
+             
+         </div>      
+       </div>
+         <svg width='0' height='0'>
+           <defs>
+             <clipPath id="clipping2">
+               <path d='M -1 85 V 119 H 616 V 2 C 613 12 610 20 590 30 H 25 C 6 22 2 13 -1 -1 Z'></path>
+             </clipPath>
+           </defs>
+         </svg>
+         
+         <svg width='0' height='0'>
+           <defs>
+             <clipPath id="clipping1">
+               <path d='M -1 85 V 600 H 616 V 2 C 613 12 610 20 593 24 H 17 C 4 22 2 13 -1 -1 Z'></path>
+             </clipPath>
+           </defs>
+         </svg>
+      
+     
+     

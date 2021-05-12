@@ -1,0 +1,58 @@
+<button (click)='showCreateExerciseModal()' class="btn btn-primary createButton" >create exercise</button>
+
+
+<div class="workouts">
+        <div  class="workout" *ngFor='let exercise of exercises' >
+                <img  class="exerciseImg" [src]="exercise.gif" >
+                <div>
+                        <h5> <label > Title :</label> {{exercise.title}}</h5>
+                        <div >
+                                <label > Description :</label>
+                                <div>{{exercise.description}}</div> 
+                        </div>
+                </div>
+                <div  ngbDropdown class="optionsMenu">
+                      <i class="bi bi-three-dots optionsIcon" id="dropdownBasic1" ngbDropdownToggle></i>
+                      <div  ngbDropdownMenu class="options" aria-labelledby="dropdownBasic1">
+                         <button (click)='deleteExercise(exercise.id)' ngbDropdownItem>Delete exercise</button>
+                      </div>
+                </div>
+                
+        </div>
+</div>
+<div class="blurDiv"></div>
+
+<ng-template    #createExerciseModal let-modal>
+        <div class="modal-header" >
+            <h4 class="modal-title"  id="modal-basic-title">Exercise Creation</h4>
+            <div>
+                    <button type="button" style="margin-right: 10px" class="btn btn-danger" (click)="closeModal(modal)">Close</button>
+                    <button type="button" [disabled]='form.invalid' class="btn btn-success" (click)="createExercise(form,gif)">Create</button>
+            </div>
+        </div>
+        <div class="modal-body"  >
+            <form class="formExercise" #form='ngForm' >
+                <div class="exerciseInformation" >
+                        <div class="titleCreationDiv" >
+                                <label >Title :</label>
+                                <input #title='ngModel' ngModel name="title" type="text" required>
+                        </div>
+                        <div class="titleCreationDiv" >
+                                <label >Description : </label>
+                                <textarea #description='ngModel' ngModel name="description" required  rows="7"></textarea>
+                        </div>
+                 </div>
+                 <div class="uploadGifSection">
+                        <div class="addButton">
+                                <input #gifModel='ngModel' ngModel name="gif" required hidden (change)='selectImage($event)' #gif type="file" accept="image/*">
+                                <button class="btn btn-primary" (click)='gif.click()'>Add gif</button>
+                        </div>
+                        <img class="imgGif" [class]="{hideElement:imageURL==''}" [src]="imageURL" >
+                 </div>
+                 
+            </form>
+    
+        </div>
+     
+    </ng-template>
+    

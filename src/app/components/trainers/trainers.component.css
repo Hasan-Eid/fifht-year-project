@@ -1,0 +1,154 @@
+.trainers{
+    margin-block: 12px;
+    overflow: auto;
+    /* background: #00000080; */
+    width: 100%;
+    display: flex;
+    position: relative;
+    text-align: center;
+    border: solid 1px black;
+    padding: 10px 50px;
+    border-radius: 75px;
+}
+
+::-webkit-scrollbar {
+    height:  5px;
+    width:5px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 50px #adb5bd; 
+    border-radius: 10px;
+    margin-inline: 75px;
+    margin-block: 20px;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #099dc2; 
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #06596e; 
+  }
+.followers{
+    color: white;
+    font-size: 10px;
+    margin-bottom: 5px;
+    border-radius: 25px;
+    background: #0000006e;
+    padding-inline: 10px;
+  
+}
+:host /deep/ ul{
+    border: solid;
+    border-width: 1px;
+    border-color: #0062cc;
+    }
+     :host ::ng-deep .page-link {
+      color:#203444;
+      background-color: #dee2e652
+     }
+ 
+     :host ::ng-deep  li.disabled .page-link,
+     :host ::ng-deep  li.disabled .page-link{
+        background-color: #dee2e652;
+        color: #203444;
+     }
+     :host ::ng-deep  .page-item.disabled .page-link,
+     :host ::ng-deep  .page-item.disabled .page-link{
+        background-color: #dee2e652;
+        color: #203444;
+     }
+     
+     :host ::ng-deep .page-link:focus ,
+     :host ::ng-deep  .active .page-link,
+     :host ::ng-deep  .active .page-link:hover
+     {
+       color: white;
+       background-color: rgb(11 85 170 / 48%);
+    
+     }
+    
+     :host ::ng-deep .page-link:hover  {
+      background-color: rgb(198, 206, 198)
+    
+     }
+    
+.paginationDiv{
+    
+    display: flex;
+    justify-content: center;
+
+}
+.trainers div{
+    display: grid;
+    justify-items: center;
+    width: fit-content;
+}
+.user{
+    border-radius: 50%;
+    margin-inline: 6px;
+    width: 90px;
+    height: 90px;
+    border: solid 1px #0dc8ee
+
+}
+.storyName{
+    color: white;
+    font-size: 10px;
+}
+
+.followThem{
+    text-align: center
+}
+.followThem span{
+    padding: 3px 30px;
+    font-size: x-large;
+    border-radius: 25px;
+    background: linear-gradient(0deg, #034554, #00c4ffa3);
+    color: white;
+    filter: drop-shadow(2px 2px 3px black);
+}
+.suggestion{
+    text-align: center
+}
+.suggestion span{
+    
+    padding: 3px 30px;
+    font-size: x-large;
+    border-radius: 25px;
+    background: linear-gradient(0deg, #0791a7,#0791a7, white);
+    filter: drop-shadow(2px 2px 3px black);
+
+}
+.trainersDiv{
+    width: 70%;
+    border: 1px solid #197ea0;
+    padding: 5px;
+    font-family: 'Times New Roman';
+    background: linear-gradient(-4deg,#f8f9fa2e, transparent);
+    border-radius: 25px;
+    position: absolute;
+    left: 60%;
+    filter: drop-shadow(2px 4px 6px black);
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+}
+.blurDiv{ 
+    z-index: -1;
+    background-image: url(../../../assets/sports.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    filter: blur(10px)
+
+}

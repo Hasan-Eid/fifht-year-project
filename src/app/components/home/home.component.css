@@ -1,0 +1,259 @@
+.mainDiv{
+    position: absolute;
+    left: 0px;
+    top: -5%;
+    width: 100%;
+    height: 105%;
+    overflow: auto;
+    filter: drop-shadow(0px 0px 6px black);
+}
+.goTopBtn{
+    position: absolute;
+    right: 2%;
+    top: 5%;
+    z-index: 9999;
+    border-radius: 50%;
+}
+.mainDiv::-webkit-scrollbar {
+    width:  5px;
+  }
+.close{
+    position: absolute;
+    left: 90%;
+    color: white;
+    font-size: xx-large;
+    margin-top: 10px;
+}
+.storyName{
+color: white;
+font-size: 10px;
+}
+.timeline2{
+    position: absolute;
+    background: rgba(218, 213, 213, 0.767);
+    width: 80%;
+    top: 9px;
+    margin-inline: 50px;
+    height: 2px;
+}
+.timeline
+{
+    position: absolute;
+    background: greenyellow;
+    width: 80%;
+    top: 9px;
+    margin-inline: 50px;
+    height: 2px;
+
+}
+.yourStory{
+    top: -50%;
+    color: white;
+    position: relative;
+    font-family: cursive;
+}
+
+.imageSection{
+    
+} 
+.createPostLink:hover{
+    text-shadow: 0px 0px 5px white
+}
+.postButtons{
+    display: grid;
+    height: 250px;
+    width: 10%;
+    align-content: space-around;
+    margin-left: -3px;
+    z-index: 1;
+    padding-block: 10px;
+
+}
+
+.selectedImagesDiv{
+}
+.selectedImagesDiv img{
+object-fit: contain;
+margin: 5px;
+width:90px;
+ height:90px;
+}
+.writtenContentDiv{
+    font-family: 'Times New Roman';
+    margin-bottom: 10px;
+    padding: 5px;
+    border-bottom: dashed 1px;
+
+}
+
+.postButtons button{
+    font-family: 'Times New Roman';
+    height: 50px;
+    padding: 0px 10px;
+    border: none;
+    min-width: 65px;
+    border-radius: 0px 25px 25px 0px
+
+}
+.postButtons button:hover{
+    animation: buttonframe .3s forwards;
+    
+}
+.postContentTextarea{
+    padding: 10px;
+    border: solid 1px;
+    resize: none;
+    outline: none;
+    border-radius: 10px;
+
+}
+@keyframes example {
+    0%   {transform: scale(0.01);opacity: 0;}
+    100%  {transform: scale(1);opacity: 1;}
+
+}
+@keyframes  buttonframe{
+    from {padding: 0px 10px;}
+    to {padding: 0px 20px;}
+  }
+
+.postParts{
+    z-index: 2;
+    max-height: 250px;
+    width: 84%;
+    overflow: auto;
+    font-family: 'Times New Roman';
+    background:#00000054;
+    text-align: center;
+    color: white;
+    border: solid 2px white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    animation: showingCreationSection 1s ease-out;
+
+}
+@keyframes  showingCreationSection{
+    0% {height: 0px;}
+    100% {height: 250px;}
+  }
+@keyframes  hidingCreationSection{
+    0% {height: 250px;}
+    100% {height: 0px;}
+  }
+.createPost{
+    filter: drop-shadow(2px 4px 6px black);
+    display: none;
+    margin-top: 10px;
+    width: 35%;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0px);
+
+}
+
+.createPostLink{
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    font-family: 'Times New Roman';
+    background:#00000080;
+    text-align: center;
+    color: white;
+    border: solid 2px white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    position: relative;
+    left: 50%;
+    
+    transform: translate(-60%, 0px);
+}
+.showSection{
+
+    position: relative;
+    top: 5%;
+ 
+} 
+
+.storyShowSection{
+    position: relative;
+    display: none;
+    width: fit-content;
+    margin-left: 25%;
+
+}
+.imageStory{
+    width: 500px;
+    height: 300px;
+    border-radius: 50px;
+    border: solid #5f1616 1px;
+    display: none;
+    object-fit: contain
+}
+
+.postsSection{
+    width: 70%;
+    display: block;
+    left: 24%;
+    margin-top: 10px;
+    position: relative;
+    padding: 20px;
+}
+.storiesDiv{
+    margin-top: 10px;
+    overflow: auto;
+    background: #00000080;
+    width: 616px;
+    display: flex;
+    position: relative;
+    text-align: center;
+    border: solid 2px white;
+    padding: 5px 0px 0px 0px;
+    border-radius: 60px;
+    left: 25%;
+}
+
+::-webkit-scrollbar {
+    height:  5px;
+    width:5px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 50px #adb5bd; 
+    border-radius: 10px;
+    margin-inline: 60px;
+    margin-block: 20px;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #099dc2; 
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #06596e; 
+  }
+  
+.blurDiv{ 
+    z-index: -1;
+    background-image: url(../../../assets/sports.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    filter: blur(10px)
+
+}
+.user{
+    border-radius: 50%;
+    margin-inline: 6px;
+    width: 90px;
+    height: 90px;
+    border: solid 1px #0dc8ee
+
+}

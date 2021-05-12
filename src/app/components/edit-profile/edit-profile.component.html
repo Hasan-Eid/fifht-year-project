@@ -1,0 +1,49 @@
+<div class="profile">
+    <h2>Profile Information</h2>
+    <form #form='ngForm' (ngSubmit)='saveChanges(form,imgFile)' >
+      <div class="d-flex mb-5 justify-content-between" #pd>
+            <div >
+                    <fieldset class="mb-3">
+                            <legend>Full Name :</legend>
+                            <div class="d-flex">
+                                        <input #first='ngModel' ngModel required name="first"  class="font first"  placeholder="First Name" type="text">
+                                        <input #last='ngModel' ngModel required name="last" class="font"  placeholder="last Name" type="text">
+                            </div>
+                            <p class="error" *ngIf='(first.touched&&first.invalid)||(last.touched&&last.invalid)'> Full name is required !!</p>
+
+                    </fieldset>
+                    <fieldset class="birthdayFieldset">
+                            <legend>Birthday :</legend>
+                               <div class="birthdayDiv">
+                                   <input ngModel #year='ngModel' (change)='changeYear(year)'   class="font" type="number"  name="year"  placeholder="year" required [min]="thisYear-100"  [max]="thisYear">
+                                   <select  ngModel='January'  #selectmonth='ngModel'  #select1 (change)="selectMonth(select1)"   name="month">
+                                      <option *ngFor="let month of months" [value]="month">{{month}}</option>
+                                   </select>
+                                   <input ngModel #day='ngModel' (change)='changeDay(day,selectmonth)'   placeholder="day" name="day" min="1" max="31" required type="number" class="font">
+                                </div>
+                                <p class="error" *ngIf='(year.touched&&year.invalid)||yearInvalid||(day.touched&&day.invalid)||dayInvalid'>Invalid birthday !!</p>
+                    </fieldset>
+            </div>        
+            <div class="carearDiv">
+               <label for="carear" class="carear">Sport Career :</label>
+               <textarea ngModel #career='ngModel' name="carear"  id="carear" class=" font" cols="30" rows="4"></textarea>
+               <label for="hobbies" class="carear">Hobbies</label>
+               <input class="font" ngModel #hobbies='ngModel' name='hobbies' type="text" id="hobbies">
+        </div>
+            <div class="imageDiv">
+                    <img #img src="../../../assets/user.png"  class="user" >
+                    <div  aria-label="Basic example">
+                        <button type="button" #editPhoto  (click)='imgFile.click()' class="btn  btn-primary">Edit Photo</button>
+                        <input   #imgFile    name='imgFile' accept="image/*" (change)='fileUpload(imgFile)' type="file"  hidden>
+                    </div>
+            </div>
+      </div>
+      <div class=' bottomDiv ' >
+           <div class="btn-group" role="group" aria-label="example">
+                <button type="button" (click)='toMy()'   class="btn btn-primary" >Cancle</button>
+                <button type="submit" [disabled]='form.invalid'  class="btn btn-primary">Save Changes</button>
+          </div>
+
+      </div>
+    </form>
+</div>

@@ -1,0 +1,83 @@
+
+<button (click)='showCreateWorkoutModal()' class="btn btn-primary createButton" >create workout</button>
+<div class="workouts">
+        <div  (click)='goToWorkout(workout.id)' class="workout" *ngFor='let workout of workouts' >
+                <div>
+                        <h5> <label > Title :</label> {{workout.title}}</h5>
+                        <div><label > Description :</label> {{workout.description}}</div>
+                </div>
+                <div (click)='clickOnOptionMenu($event)' ngbDropdown class="optionsMenu">
+                      <i class="bi bi-three-dots optionsIcon" id="dropdownBasic1" ngbDropdownToggle></i>
+
+                      <div  ngbDropdownMenu class="options" aria-labelledby="dropdownBasic1">
+                         <button (click)='deleteWorkout($event,workout.id)' ngbDropdownItem>Delete workout</button>
+                      </div>
+                </div>
+                
+        </div>
+        <a class="more" (click)='moreWorkouts()'>More</a>
+</div>
+<div class="blurDiv"></div>
+
+<ng-template    #createWorkoutModal let-modal>
+        <div class="modal-header" >
+            <h4 class="modal-title workoutModalTitle"  id="modal-basic-title">Workout Creation</h4>
+            <div>
+                    <button type="button" style="margin-right: 10px" class="btn btn-danger" (click)="modal.close('cancle click')">Close</button>
+                    <button type="button" [disabled]='form.invalid' class="btn btn-success" (click)="createWorkout(form)">Create</button>
+            </div>
+        </div>
+        <div class="modal-body" style="max-height:88% " >
+            <form #form='ngForm' class="formWorkout">
+                <div class="bodyModalSection">
+                        <div class="bodySectionLeft">
+                                <div class="titleCreationDiv">
+                                        <label >Title :</label>
+                                        <input #title='ngModel' ngModel name="title" type="text" required>
+                                </div>
+                                <div class="titleCreationDiv">
+                                        <label >Description : </label>
+                                        <textarea #description='ngModel' ngModel name="description" required class="description"  rows="7"></textarea>
+                                </div>
+                        </div>
+                        <div class="bodySectionRight">
+                            <div  class="exercise" *ngFor='let exercise of exercises'>
+                                <input type='checkbox' class="checkboxOfExercise">
+                                <div style="display: flex">
+                                    <img class='imgGif'  [src]="exercise.gif" >
+                                    <!-- <img class="imgGif" width="100" height="100" src="../../../assets/r1.jpg" > -->
+                                    <div class="exerciseInformation">
+                                            <div> <label >title :</label> {{exercise.title}}</div>
+                                            <div> <label >description :</label> {{exercise.description}}</div>
+                                            <div class="numberSection">
+                                                    <div >
+                                                            <label >num of sets :</label>
+                                                            <input class="numOfSets" value="10" type="number">
+                                                    </div>
+                                                    <div>
+                                                    <label >Duration :</label>
+                                                    <input class="duration" value="20" type="number">
+                                                    </div>
+    
+                                                    <div>
+                                                            <label >Rest Duration :</label>
+                                                            <input class="restDuration" value="20" type="number">
+                                                    </div>
+                                                    
+                                                
+                                            </div>
+                                    </div>
+                                       
+                                </div>
+                                
+                            </div>
+                        </div>
+                </div>
+                
+            </form>
+    
+        </div>
+    
+    </ng-template>
+    
+    

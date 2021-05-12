@@ -1,0 +1,92 @@
+<div>
+    <div class="topDiv">
+     <nav class="navbar navbar-expand-lg navbar-light topNavbar ">
+       <a class="navbar-brand"  >Sport World</a>
+       
+       <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item ">
+              <a class="nav-link" routerLink=''routerLinkActive='active1' [routerLinkActiveOptions]="{exact:true}">Home <span class="sr-only">(current)</span></a>
+             </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink='contactUs' routerLinkActive='active1' [routerLinkActiveOptions]="{exact:true}">Contact Us</a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" routerLink='aboutUs' routerLinkActive='active1' [routerLinkActiveOptions]="{exact:true}">About As</a>
+            </li>
+         
+         
+          </ul>
+      
+       </div>
+      </nav>
+      <form  class="form-inline my-2 friendsHide" style="clip-path: url(#clippingForm);z-index: 2;">
+ 
+        <div class="input-group mb-3 friendsHide divInsideForm">
+            <button class="btn btnSearch friendsHide " (click)='searchFun(search,$event)'type="button" >
+              <i class="bi bi-search"></i>
+            </button>
+            <input name='search'  #search='ngModel'ngModel class=" friendsHide form-control  search" type="search"  placeholder="search..." aria-label="Search">
+        </div>
+        <a (click)='showNotifications($event)' class="whistle notificationHide">
+          <img width="25"  height="25" [src]="notifications.length>0?'../../../assets/redWhistle.png':'../../../assets/blackWhistle.png'" >
+        </a>
+        
+        
+    </form>
+    </div>
+    <div class="middleDiv" >
+      
+       <div class="btn-group leftDiv"  style="clip-path: url('#clipping')" role="group" aria-label="Basic outlined example">
+          <a   class="btn leftbutton " routerLink='profile' routerLinkActive='active2'[routerLinkActiveOptions]="{exact:true}" style="width: 245">Profile</a>
+          <a   class="btn leftbutton "routerLink='myPage' routerLinkActive='active2' [routerLinkActiveOptions]="{exact:true}" style="width: 240">My Page</a>
+          <a  class="btn leftbutton" routerLink='friends' routerLinkActive='active2' [routerLinkActiveOptions]="{exact:true}" style="width: 230px">Friends</a>
+          <a  class="btn leftbutton" routerLink='trainers'routerLinkActive='active2' [routerLinkActiveOptions]="{exact:true}" style="width: 225px">Trainers</a>
+           <a  class="btn leftbutton" routerLink='teams' routerLinkActive='active2' [routerLinkActiveOptions]="{exact:true}"style="width: 215px">Teams</a>
+          <a  class="btn leftbutton" routerLink='workouts' routerLinkActive='active2' [routerLinkActiveOptions]='{exact:true}'  style="width: 210">Worksout</a>
+       </div>
+       
+       <router-outlet style="padding: 5px" ></router-outlet>
+       <!-- <div  class='friendsDiv friendsHide' id="friendsDiv" >
+          <div  class="friend friendsHide" *ngFor='let person of persons | namesfilter:search.value '>
+              <img class="user friendsHide" src="../../../assets/user.png" > 
+              <span class="friendsHide spanFriends" >{{person.first_name}}</span>
+              <button (click)='accept(person.slug)' class="btn btn-primary follow friendsHide">Follow</button>
+          </div>
+       </div> -->
+       <div #notificationsDiv  class='notificationsDiv notificationHide'  >
+          <div class="notificationsHearder notificationHide">Notifications</div>
+          <div class="notificationHide notificationList">
+              <div  class="notification notificationHide" *ngFor='let notification of notifications '>
+                  <img class="user notificationHide " [src]="notification.image" >
+                  <div>
+                       <div class=" spanFriends notificationHide">{{notification.content}}</div>
+                       <div class="acceptRemoveButtons notificationHide" [class]="{hideElement:notification.type=='normal'}" >
+                          <button (click)='accept(notification.slug)' class="btn btn-primary follow  notificationHide">Accept</button>    
+                          <button (click)='reject(notification.slug)' class="btn btn-primary follow notificationHide">Reject</button>    
+                       </div>
+                  </div> 
+              </div>
+          </div>
+       </div>
+
+   </div>
+   
+ </div>
+
+ <svg width='0' height='0'>
+  <defs>
+    <clipPath id="clipping">
+      <path d='M 0 0 c 270 -400 315 315 0 600'></path>
+    </clipPath>
+  </defs>
+</svg>
+<svg width='0' height='0'>
+ <defs>
+   <clipPath id="clippingForm">
+     <path d='M 0 0 C 241 107 508 116 750 -3'></path>
+   </clipPath>
+ </defs>
+</svg>
+
+     

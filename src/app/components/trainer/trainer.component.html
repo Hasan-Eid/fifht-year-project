@@ -1,0 +1,48 @@
+
+<div class="mainDiv"  id="mainDiv">
+        <div class="topDiv">
+            <div class="nameDiv">
+                <img class="profileImage" [src]="trainer?.image" >
+                <h5> {{trainer?.page_name}} </h5>
+            </div>
+            <div #buttonsDiv class="buttonsDiv">
+                <button (click)='showPosts()' class="postButton">Posts</button>
+                <button (click)='showPhotos()'>Photos</button>
+                <button (click)='showVideos()'>Videos</button>
+                <button (click)='showWorkouts()' class="workoutsButton">Workouts</button>    
+            </div>
+            
+        </div>
+        
+        <div class="bottomDiv">
+                <div #follower [class]="{hideElement:!trainer?.follow}" class="follower">
+                    <a (click)="unFollow(trainer?.slug)" > <span style="padding-right: 10px;">&#x2714;</span>follower</a>
+                </div>
+                <div #unFollower [class]="{hideElement:trainer?.follow}" class="unFollower">
+                    <a (click)="follow(trainer?.slug)">Unfollower</a>
+                </div>
+                <div class="career">
+                    <h4>career</h4>
+                    <div >{{trainer?.career}} </div>
+                </div>
+                       
+        </div>
+    </div>
+    <div class='blurDiv'></div>
+    
+    <a class="back" (click)='back()'><i class="bi bi-arrow-right "></i></a>
+    <div #showDiv class="showDiv">
+        <i (click)="hideShowDiv()" class="bi bi-arrow-left leftBack "></i>
+        <div #showSection class="showSection">
+            <div class="postsShowSection" >
+                <div  *ngFor="let post of posts">
+                    <app-post  [post]="post"> </app-post>
+                </div>
+            </div>
+            <div #photosShowSection class='photosShowSection' >
+                    <img  class="photoClass" *ngFor="let photo of photos " (click)='showImage($event)'  [src]="photo" >
+            </div>
+            <div class="videosShowSection"></div>
+            <div class="workoutsShowSection"></div>
+        </div>
+    </div>

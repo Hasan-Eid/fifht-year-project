@@ -1,0 +1,177 @@
+.mainDiv{
+    position: relative;
+    filter: drop-shadow(2px 4px 6px black);
+    top: -54px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    border: white solid 2px;
+    border-radius: 0px 0px 25px 25px;
+    border-top: none;
+    width: 616px;
+    padding: 30px 10px 100px 10px;
+    background: #00000057;
+    clip-path: url('#clipping1');
+
+
+}
+
+.writeCommentSection{
+    position: absolute;
+    bottom: 20px;
+    width: 90%;
+    left: 5%;
+    justify-content: center;
+    display: flex;
+    border: solid white 1px;
+    border-radius: 50px;
+    box-shadow: 0px 0px 10px white;
+    padding: 10px;
+}
+.writeCommentSection div{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    position: relative;
+}
+.commentTextarea{
+    resize: none;
+    padding-right: 30px;
+    height: 44px;
+    width: 100%;
+    overflow: hidden;
+    padding: 10px;
+    background: #ffffffad;
+    border: solid white 1px;
+    border-radius: 25px;
+    outline: none;
+}
+.commentTextarea::placeholder{
+    color: black;
+}
+.emojiIcom{
+    position: absolute;
+    right: 15px;
+    bottom: 10px;
+}
+
+
+
+.commentContent{
+    font-size: 12px;
+    margin-block: 2px;
+}
+.likeComment{
+    display: flex;
+
+}
+.like{
+    margin-right: 20px
+}
+
+.commentHeader{
+   display: flex;
+}
+
+.showPreviousComments{
+    color: #0dc8ee;
+    font-family: 'Times New Roman';
+    padding: 10px 0px 5px 0px;
+    /* background: linear-gradient(0deg ,#ffffff61, transparent); */
+}
+
+.showPreviousComments:hover{
+    text-shadow: 0px 0px 5px
+}
+.commentDiv{
+    width: 80%;
+    margin-top: 5px;
+    background: #ffffffad;
+    border: white solid 1px;
+    border-radius: 41px;
+    padding: 5px;
+    display: flex;
+    box-shadow: 1px 1px 4px white;
+
+}
+.commentContainer{
+
+    max-height: 399px;
+    overflow: auto;
+
+}
+::-webkit-scrollbar {
+    width:  5px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 50px #adb5bd; 
+    border-radius: 10px;
+    margin-inline: 60px
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #0dc8ee; 
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #5d8006; 
+  }
+
+.replySection{
+animation: showComments 3s
+}
+@keyframes showComments{
+    from {
+        opacity: 1;
+    }
+  
+    to {
+        opacity: 0;
+
+    }
+  
+}
+.time span{
+    margin-left: 5px
+}
+.time i::before{
+    transform: rotate(45deg)
+}
+.time{ 
+    margin-left: 15px;
+    font-size: 10px;
+    align-self: center
+}
+.atheletImage{
+    border: solid 1px #0dc8ee;
+    border-radius: 50%;
+    margin-right: 10px;
+    width: 50px;
+    height: 50px;
+
+}
+
+.secondaryCommentDiv{
+margin-left: 20px;
+transform: scale(0.9)
+}
+
+
+
+.blurDiv{ 
+    z-index: -1;
+    background-image: url(../../../assets/sports.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    filter: blur(10px) ;
+
+}

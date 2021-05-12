@@ -1,0 +1,138 @@
+/* You can add global styles to this file, and also import other style files */
+/* body{
+    background-image: url('../images/sports.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+
+} */
+.user{
+    border-radius: 50%;
+}
+
+.commentContent{
+    font-size: 12px;
+    margin-block: 2px;
+}
+.likeComment{
+    display: flex;
+
+}
+.like{
+    margin-right: 20px
+}
+
+.commentHeader{
+   display: flex;
+}
+.commentDiv{
+    width: 80%;
+    box-shadow: 1px 1px 4px white;
+    margin-top: 5px;
+    background: #ffffffad;
+    border: white solid 1px;
+    border-radius: 41px;
+    padding: 5px;
+    display: flex;
+}
+
+.time span{
+    margin-left: 5px
+}
+.time i::before{
+    transform: rotate(45deg)
+}
+.time{ 
+    margin-left: 15px;
+    font-size: 10px;
+    align-self: center
+}
+.atheletImage{
+    border: solid 1px #0dc8ee;
+    border-radius: 50%;
+    margin-right: 10px;
+    width: 50px;
+    height: 50px;
+
+}
+/* .replySection{
+    animation: showComments 3s
+    }
+    @keyframes showComments{
+        from {
+            height:  0;
+        }
+      
+        to {
+            height:  100%;
+    
+        }
+      
+    } */
+.textareaPreant{
+
+}
+.secondaryCommentTextarea{
+    overflow: hidden;
+    height: 44px;
+    resize: none;
+    padding: 10px;
+    width: 100%;
+    background: #ffffffad;
+    border: solid white 1px;
+    border-radius: 25px;
+    padding-right: 30px;
+    outline: none;
+}
+.secondaryCommentTextarea::placeholder{
+    color: black;
+}
+.secondaryCommentDiv{
+margin-left: 20px;
+transform: scale(0.9)
+}
+
+
+.writeCommentSection{
+    position: absolute;
+    bottom: 20px;
+    width: 90%;
+    left: 5%;
+    justify-content: center;
+    display: flex;
+    border: solid white 1px;
+    border-radius: 50px;
+    box-shadow: 0px 0px 10px white;
+    padding: 10px;
+}
+.writeCommentSection div{
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+.secondaryWriteCommentSection{
+    width: 76%;
+    justify-content: center;
+    display: flex;
+    border: solid white 1px;
+    border-radius: 25px;
+    box-shadow: 0px 0px 10px white;
+    padding: 4px;
+    margin-left: 30px
+}
+.secondaryWriteCommentSection div{
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%
+
+}
+.hideViewMore{
+    display: none
+}
+
+
+.emojiIcom{
+    position: absolute;
+    right: 15px;
+    bottom: 10px;
+}

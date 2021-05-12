@@ -1,0 +1,19 @@
+
+<div >
+        <form #form='ngForm' (ngSubmit)='onSubmit(form)' >
+    
+            <div class="login">
+              <img  class="user" src="../assets/user.png" >
+               <input type="email" #email='ngModel' ngModel name="email" placeholder="Email :" required email>
+              <p *ngIf='email.errors?.required&&email.touched' class="error">email is required !!</p>
+              <p *ngIf='email.touched&&email.errors?.email' class="error">this input isn't email !!</p>
+              <input type="password" #password='ngModel' ngModel name="password" placeholder="Password" required minlength="6">
+              <p *ngIf='password.errors?.required&&password.touched' class="error">password is required !!</p>
+              <p *ngIf='password.touched&&password.errors?.minlength' class="error">password length is less than 6 </p>
+              
+            </div>
+    
+            <button style="color: white;" [disabled]='form.invalid'  type="submit"  >Sign Up</button>
+        </form>
+</div>
+<div class="blurDiv"></div>

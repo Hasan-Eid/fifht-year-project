@@ -1,0 +1,28 @@
+<div class="trainersDiv">
+        <div class="followThem"> <span> You Follow </span> </div>
+        <div class="trainers">
+                <div  *ngFor='let trainer of trainers'>
+                        <span class="followers">100 Follwers</span>
+                        <img (click)='goToTrainerPage(trainer)'  class='user' [src]="trainer.image"  >
+                        <span class="storyName"> {{trainer.page_name}}</span>
+
+                </div>
+        </div>
+        <div class="paginationDiv">
+                <ngb-pagination [pageSize]="8" (pageChange)='getNextTrainers($event)' [collectionSize]="numTrainers" [maxSize]="3"  [rotate]="true" [(page)]="pageYouFollow" aria-label="Default pagination"></ngb-pagination>
+        </div>        
+        <div class="suggestion">  <span>Suggestions</span>  </div>
+        <div class="trainers">
+                <div *ngFor='let suggestion of suggestions'>
+                        <span class="followers">100 Follwers</span>
+                        <img   class='user' [src]="suggestion.image"  >
+                        <span class="storyName"> {{suggestion.page_name}}</span>
+
+                </div>
+        </div>
+        <div class="paginationDiv">
+                <ngb-pagination [pageSize]="8" [collectionSize]="numSuggestions" (pageChange)='getNextSuggestions($event)'  [maxSize]="3" [rotate]="true" [(page)]="pageSuggestions" aria-label="Default pagination"></ngb-pagination>
+        </div>        
+</div>
+
+<div class="blurDiv"></div>

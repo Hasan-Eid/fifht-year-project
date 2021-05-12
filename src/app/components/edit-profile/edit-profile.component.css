@@ -1,0 +1,117 @@
+.profile{
+    background: #5f9ea0b0;
+    border-radius: 25px;
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    padding: 30px 30px 15px 30px;
+    
+
+}
+h2{
+    
+    text-align: center;
+    color: white;
+    margin-bottom: 10%
+
+}
+textarea:disabled{
+    background: #ffffffb3
+}
+
+.font{
+    font-size: 15px;
+    color:  #d83ea9
+}
+
+
+select{
+    color: darkcyan;
+}
+option {
+    color: #d83ea9
+}
+legend{
+    font-size: 20px;
+    color: white;
+    padding-inline: 10px;
+    margin-bottom: 0px;
+    width: auto;
+
+
+}
+.first{
+    margin-right: 10px
+}
+fieldset{
+ display: block;
+ justify-content: space-between;
+ border: 1px solid white;
+ padding: 19px;
+ border-radius: 18px;
+
+}
+
+
+.birthdayDiv{
+       
+    display: flex;
+    justify-content: space-between;
+
+}
+.carear{
+    
+    font-size: 20px;
+    color: white;
+
+}
+input{
+    outline: none
+}
+.carearDiv{
+    
+    margin-inline: 15px;
+    display: inline-grid
+
+}
+textarea{
+    background-color: #ffffff;
+    border-radius: 15px;
+    border: none;
+    outline: none;
+    padding: 10px
+
+}
+.error{
+    padding: 0px 10px;
+    margin: 8px 0px 0px 0px;
+    background: #ffc0cb9e;
+    border-radius: 10px;
+    color: red;
+    text-align: center;
+
+}
+
+::placeholder{
+    color: darkcyan
+}
+.imageDiv{
+    
+    display: grid;
+    text-align: center;
+}
+
+ .bottomDiv{
+
+    text-align: center;
+
+ }
+img{
+    height: 150px;
+    width: 150px;
+    align-self: flex-end;
+    margin-bottom: 10px;
+    box-shadow: 0px 0px 5px 
+
+}

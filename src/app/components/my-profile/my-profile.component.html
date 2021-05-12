@@ -1,0 +1,30 @@
+
+<div class="mainDiv"  id="mainDiv">
+    <div class="topDiv">
+        <button (click)='posts()' class="postButton">Posts</button>
+        <button (click)='photos()'>Photos</button>
+        <div class="nameDiv">
+             <!-- <img [src]="myProfile?.image" > -->
+             <img class="profileImage" [src]="'../../../assets/'+i" >
+             <h5> {{myProfile?.first_name +' '+myProfile?.last_name}} </h5>
+        </div>
+        <button (click)='videos()'>Videos</button>
+        <button (click)='workouts()' class="workoutsButton">Workouts</button>
+        <a rorouterLink='edit' (click)='toMyProfile()' routerLinkActive='active2'[routerLinkActiveOptions]="{exact:true}" >
+                <img  src="../../../assets/edit user.png" >
+        </a>
+    </div>
+    
+    <div class="bottomDiv">
+            <div class="career">
+                <h4>career</h4>
+                <div >{{myProfile?.career}} </div>
+            </div>
+            <div class="hobbies">
+                <h4>hobbies</h4>
+                <div > {{myProfile?.hobbies}}</div>
+            </div>
+        
+    </div>
+</div>
+<div class='blurDiv'></div>

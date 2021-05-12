@@ -1,0 +1,319 @@
+.mainDiv{
+    width: 100%;
+    font-family: 'Times New Roman';
+    display: flex;
+    height: 100%;
+    position: absolute;
+    filter: drop-shadow(2px 4px 6px black)
+}
+.hideElement{
+    display: none;
+}
+.messageContent{
+  padding: 5px 0px 3px 0px;
+  display: flex;
+}
+.messageContentParent{
+  display: flex;
+}
+.teamPersonIcon{
+  color: white;
+  font-size: x-large;
+  margin-right: 20px;
+}
+.teamPersonIcon a{
+  padding-inline: 30px;
+}
+.teamPersonIcon a:hover{
+text-shadow:0px 0px 5px black
+}
+.leftDiv{
+    width: 40%;
+    height: 100%;
+    background:lightseagreen;
+    /* border-right:1px solid; */
+}
+.rightDivFirstChild{
+  filter: drop-shadow(2px 2px 4px);
+  height: 100%;
+}
+.menuSection{
+  padding: 5px 5px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px dashed white;
+  margin-bottom: 5px;
+}
+.menuImage{
+width: 35px;
+height: 35px;
+}
+.startChat{
+  background: #00f73861;
+  width: fit-content;
+  position: absolute;
+  left: 50%;
+  top: 10%;
+  padding: 5px 20px;
+  border-radius: 50px;
+  transform: translate(-50%, 0px);
+
+}
+.messagesSection {
+  max-height: 88%;
+  overflow: auto;
+}
+.myMessage{
+    padding-top: 10px;
+    border-radius:  13px 13px  13px 13px;
+    background-color: #ffff6e;
+  }
+  .otherMessage{
+    padding-top: 10px;
+  
+    border-radius: 13px 13px 13px 13px;
+    background-color: white;
+    align-self: flex-end;
+  }
+  .MessageBefor{
+    border-radius:  0px 13px  13px 13px;
+    background-color: #ffff6e;
+    padding-top: 5px;
+  
+  }
+  .MessageAfter{
+    padding-top: 5px;
+    border-radius: 13px 0px 13px 13px;
+    background-color: white;
+    align-self: flex-end;
+  
+  }
+  
+  :host ::ng-deep .MessageBefor::before{
+    content: "";
+    position: relative;
+    top: 0px;
+    left: -23px;
+    border: solid;
+    width: 1px;
+    height: 1px;
+    border-width: 4px;
+    border-color:  #ffff6e #ffff6e transparent transparent;
+    
+  }
+  :host ::ng-deep .Message{
+    margin: 10px 15px;
+    width: fit-content;
+    max-width: 70%;
+    white-space: pre-wrap;
+    padding: 0px 15px 5px 15px ;
+    overflow-wrap: anywhere;
+  
+  }
+  .timesIcon{
+    margin:9px 0px 0px 10px;
+    height:16px;
+    color: white; 
+    width:16px;
+    min-width: 16px;
+    position: relative;
+    border-radius: 10px;
+    font-size:15px;
+    background-color: red;
+  }
+  .timesIcon span{
+    position: absolute;
+    left: 2px;
+    top: -2px;
+  }
+  .timesIcon:hover{
+    box-shadow:0px 0px 12px black
+  }
+  :host ::ng-deep .MessageAfter::before{
+    content: "";
+    position: relative;
+    top: 0px;
+    left:100%;
+    margin-left: 15px;
+    border: solid;
+    width: 1px;
+    height: 1px;
+    border-width: 4px;
+    border-color:  white  transparent transparent white;
+    
+  }
+.messageDate{
+    border-radius: 25px;
+    background: linear-gradient(0deg, #00d08d, white);
+    align-self: center;
+    padding: 5px 15px;
+    margin: 20px;
+  }
+  .messageHour{
+    align-self: flex-end;
+    white-space: nowrap;
+    margin-left: 10px;
+    font-size: 10px;
+    color:#388476 ;
+    margin-bottom: 2px;
+  
+  }
+ 
+  
+  
+  .blurDiv{
+    z-index: -1;
+    background-image: url(../../../assets/sport2.jpg);
+    background-size: cover;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    filter: blur(0px);
+  }
+  .writeMessageSection{
+    position: absolute;
+    bottom: 0px;
+    width: 90%;
+    left: 5%;
+    justify-content: center;
+    display: flex;
+    border: solid lightseagreen 1px;
+    border-radius: 50px;
+    box-shadow: 0px 0px 4px black;
+    padding: 10px;
+}
+::-webkit-scrollbar {
+  height:  5px;
+  width:5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 50px #adb5bd; 
+  border-radius: 10px;
+  margin-inline: 60px;
+  margin-block: 20px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #099dc2; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #06596e; 
+}
+.writeMessageSection div{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    position: relative;
+}
+.messageTextarea{
+    resize: none;
+    padding-right: 30px;
+    height: 44px;
+    width: 100%;
+    overflow: hidden;
+    padding: 10px;
+    background: linear-gradient(45deg, lightseagreen,lightseagreen, white);
+    border: solid white 1px;
+    border-radius: 25px;
+    outline: none;
+}
+.messageTextarea::placeholder{
+    color: black;
+}
+.emojiIcom{
+    position: absolute;
+    right: 15px;
+    bottom: 10px;
+}
+.rightDiv{
+    width: 60%;
+    height: 100%;
+    position: relative;
+}
+.friendsHeader{
+    text-align: center;
+    margin-bottom: 10px;
+    background: linear-gradient(45deg, black, transparent);
+    color: white;
+    border: solid 1px;
+    padding: 5px;
+    border-radius: 50px;
+    height: fit-content;
+}
+.friendsList{
+    max-height: 90%;
+    overflow: auto;
+    padding: 0px 10px 0px 0px;
+}
+.friend div{
+    color: white;
+    margin-left: 10px;
+
+}
+.friend:hover{
+  transform:translate(2%, 0px);
+  transition: .1s;
+  box-shadow: 0px 0px 5px yellow;
+}
+.team div{
+  color: white;
+  margin-left: 10px;
+
+}
+.team{
+  display: flex;
+  align-items: center;
+  position: relative;
+  background: linear-gradient(45deg, black, transparent);
+  padding: 0px 35px 0px 0px;
+  max-width: 98%;
+  border: 1px solid #00d0ff;
+  border-radius: 50px;
+}
+.optionsIcon:hover{
+transform: scale(1.05)
+}
+.optionsIcon::after{
+  content:'';
+border: none;
+  }
+.optionsIcon{
+
+}
+.options{
+    position: absolute!important;
+    top: 0px!important;
+    left: 100%!important;
+    z-index: 99999999!important;
+    transform: translate(-100%, 20px)!important;
+}
+.optionsMenu{
+  display: inline-block;
+  position: absolute;
+  left: 93%;
+
+}
+.friend{
+    display: flex;
+    align-items: center;
+    position: relative;
+    background: linear-gradient(45deg, black, transparent);
+    padding: 0px 35px 0px 0px;
+    max-width: 98%;
+    border: 1px solid #00d0ff;
+    border-radius: 50px;
+}
+.user{
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    margin-right: 10px
+}

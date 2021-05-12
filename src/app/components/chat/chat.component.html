@@ -1,0 +1,82 @@
+
+
+<div class="mainDiv">
+    <div class="leftDiv">
+        <div class="menuSection">
+            <img (click)='showMenuContent()'class="menuImage" src="../../../assets/menu.png" >
+            <div class="teamPersonIcon" >
+                <a  (click)='showTeams()' ><i class="bi bi-people-fill"></i></a>
+                <a (click)='showFriends()' ><i class="bi bi-person"></i></a>
+            </div>
+        </div>
+
+        <div class="friendsHeader" [class]='{hideElement:teamsNotFriends}'>Friends</div>
+        <div class="friendsList"[class]='{hideElement:teamsNotFriends}'>
+            <div (click)='getPersonalMessages(friend.slug)' class="friend" *ngFor='let friend of friends'>
+                <img class="user" [src]="friend.image" >
+                <div>{{friend.name}}</div>
+           </div>
+        </div>
+
+        <div class="friendsHeader" [class]='{hideElement:!teamsNotFriends}'>Teams</div>
+        <div class="friendsList" [class]='{hideElement:!teamsNotFriends}'>
+            <div (click)='getTeamMessages(team.id)'  class="friend " *ngFor='let team of teams'>
+                <img class="user" [src]="team.image" >
+                <div >{{team.name}}</div>
+               
+            </div>
+
+        </div>
+    </div>
+    <div class="rightDiv">
+        <div [class]='{hideElement:!firstEntry}' class="startChat">Select friend or team to start chat</div>
+        <div  [class]='{hideElement:firstEntry}' class="rightDivFirstChild">
+            <div  class="messagesSection">
+                    <div class="d-flex flex-column" *ngFor="let message of messages;index as i">
+                            <div class="messageDate" *ngIf="showDate(i)"  >{{getDate(message.date)}}</div>
+                            <div class="Message d-flex" [ngClass]="{'myMessage':myMessage(i)&&showClassMessage(i),'MessageBefor':messageBeforClass(i),'MessageAfter':messageAfterClass(i),'otherMessage':showClass2Message(i)}" (pointerleave)="hideTimesIcon($event)" (pointerover)="showTimesIcon($event)">
+                               <div class="messageContentParent">
+                                  <div class="messageContent" >
+                                    <div style="margin-left:10px;font-size: 15px">{{message.content}}</div>
+                                    <small class="messageHour">2:33 AM</small>    
+                                  </div>
+            
+                               </div>
+                               <i  class="timesIcon" hidden [class]='{hideElement:!myMessage(i)}' (click)="deleteMessage(i)" > <span>&#215;</span></i>    
+            
+                            </div>
+                    </div>
+            </div>
+            
+            <div class="writeMessageSection">
+                <div>
+                    <textarea #textarea (input)="messageInput(textarea)" (keyup.enter)='addMessage($event,textarea)' class="messageTextarea"   placeholder="write message ..."></textarea>
+                    <i class="bi bi-emoji-smile emojiIcom"></i>        
+                </div>
+            </div>
+           
+        </div>
+        <div class='blurDiv'></div>
+    </div>
+</div>
+<ng-template    #menuModal let-modal>
+        <div class="modal-header" >
+            <h4 class="modal-title" id="modal-basic-title">Post Content</h4>
+        </div>
+        <div class="modal-body" >
+            <div>New Group</div>
+        </div>
+        <div class="modal-footer">
+
+        </div>
+</ng-template>
+
+<!-- here option menu for team -->
+<!-- <div ngbDropdown class="optionsMenu">
+    <i class="bi bi-three-dots-vertical optionsIcon" id="dropdownBasic1" ngbDropdownToggle></i>
+    <div  ngbDropdownMenu class="options" aria-labelledby="dropdownBasic1">
+      <button (click)='addMember(team.id)' ngbDropdownItem>Add member</button>
+      <button (click)='deleteMember(team.id)' ngbDropdownItem>Delete member</button>
+      <button (click)='leaveTeam(team.id)' ngbDropdownItem>leave team</button>
+    </div>
+</div> -->

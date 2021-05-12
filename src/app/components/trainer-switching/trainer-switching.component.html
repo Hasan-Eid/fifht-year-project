@@ -1,0 +1,2 @@
+<app-trainer *ngIf="choose=='trainer'" [trainer]="trainer" (chooseTrainer)='change($event)' ></app-trainer>
+<app-trainers *ngIf="choose=='trainers'" (trainer)='setTrainer($event)' (chooseTrainer)='change($event)'></app-trainers>

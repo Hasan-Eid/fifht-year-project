@@ -1,0 +1,68 @@
+<div class="mainDiv">
+    <div class="rightDiv">
+            <div [class]="{hideElement:!workout.workout.profile}" class="workoutProfile">
+                <img class="atheletImage" [src]="workoutProfile.image" >
+                <h6>{{workoutProfile.first_name+" "+workoutProfile.last_name}}</h6>
+            </div>
+            <div [class]="{hideElement:workout.workout.profile}" class="workoutProfile">
+                <img class="atheletImage" [src]="workoutTrainer.image" >
+                <h6>{{workoutTrainer.page_name}}</h6>
+            </div>
+            <div class="workoutInfo">
+                <div>
+                    <h5> <label > Title :</label> {{workout.workout.title}}</h5>
+                    <div >
+                        <label > Description :</label>
+                        <div>{{workout.workout.description}}</div> 
+                    </div>
+                </div> 
+            </div>
+    </div>
+    <div class="leftDiv">
+        <div class="exerciseTitle">{{workout.exercises[currentExercise].title}}</div>
+        <div class="exerciseDetail"  >
+            <div class="leftAndRightDetail">
+                <div class="exerciseDetailRight">
+                    <div >
+                        <div class="numOfSets">
+                            <label >Num of Sets :</label>
+                            <div>{{workout.exercises[currentExercise].num_of_sets}}</div>
+                        </div>
+                        <div class="duration">
+                            <label >Duration :</label>
+                            <div>{{workout.exercises[currentExercise].set_duration}}</div>
+                        </div>
+                    </div>
+                    <div [class]="{hideElement:restPeriod}" class="counter" >
+                        <div>
+                            {{counter}}
+                        </div>
+                        <h6>Play Duration</h6>
+                    </div>
+                    <div [class]="{hideElement:!restPeriod}" class="counter" >
+                         <div>
+                             {{restCounter}}
+                         </div>
+                         <h6>Rest Duration</h6>
+                    </div>
+                </div>
+                <div class="exerciseDetailLeft">
+                    <div class="round">
+                        Round {{currentSet}}
+                    </div>
+                    <div class="imgGif restDurationDiv" [class]="{hideElement:!restPeriod}" >Rest Duration</div>
+                    <img class="imgGif" [class]="{hideElement:restPeriod}" [src]="workout.exercises[currentExercise].gif" >
+                </div>
+                
+            </div>
+            <div class="play">
+                <i (click)='previous()' class="bi bi-chevron-double-left"></i>
+                <button (click)='play()' class="btn btn-primary">play</button>
+                <i (click)='next()' class="bi bi-chevron-double-right"></i>
+            </div>
+        </div>
+        <div class="exerciseDescription">{{workout.exercises[currentExercise].description}}</div>
+    </div>
+</div>
+
+<div class="blurDiv"></div>
