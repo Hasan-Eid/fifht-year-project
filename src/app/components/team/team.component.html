@@ -1,1 +1,46 @@
-<p>team works!</p>
+<div class="container text-center my-2">
+    <button *ngIf="is_admin" class="mx-auto btn btn-info" (click)="open(content)">
+        Edit Team
+    </button>
+    <button *ngIf="is_admin" class="mx-auto btn btn-danger" (click)="deleteTeam()">
+        Delete Team
+    </button>
+    <button *ngIf="is_team_member" class="mx-auto btn btn-danger" (click)="deleteTeam()">
+        Leave Team
+    </button>
+</div>
+
+<ng-template #content let-modal>
+    <app-team-edit [team]="team"></app-team-edit>
+</ng-template>
+
+
+<div class="mainDiv container w-100 mb-5"  id="mainDiv">
+    <div class="topDiv row mb-3">
+        <div class="nameDiv col-12 text-center">
+            <img class="profileImage rounded-circle w-50" [src]="team.image">
+            <h5 class="text-center" style="font-size: xx-large; background-color: rgba(255, 255, 255, 0.857);"> {{ team.name }} </h5>
+       </div>
+
+        <div class="col-12 col-md-4 text-center mx-auto my-auto">
+            <a routerLink="/team/{{team.id}}/posts"><button class="postButton btn w-100">Posts</button></a>
+        </div>
+        <div class="col-12 col-md-4 text-center mx-auto my-auto">
+            <a routerLink="/team/{{team.id}}/members"><button class="btn w-100">Members</button></a>
+        </div>
+        <div class="col-12 col-md-4 text-center mx-auto my-auto">
+            <a routerLink="/team/{{team.id}}/workouts"><button class="workoutsButton btn w-100">Workouts</button></a>
+        </div>
+    </div>
+    
+    <div class="bottomDiv row">
+            <div class="career col-12">
+                <h4>Team Description</h4>
+                <div >{{ team.description }} </div>
+            </div>
+        
+    </div>
+</div>
+
+<!-- <app-team-edit [team]="team"></app-team-edit> -->
+

@@ -1,0 +1,12 @@
+<button  (click)='goToTopScroll()' class="btn btn-primary float-right ml-1" style="position: fixed; right: 0; z-index: 9;">
+    <i class="bi bi-chevron-double-up"></i>
+</button>
+
+<div #mainDiv>
+    <div class="">
+        <app-post *ngFor="let post of posts" [post]="post"></app-post>
+    </div>
+    <div class="text-center">
+        <a (click)="getMorePosts()" class="btn btn-primary text-light m-3">More</a>
+    </div>
+</div>

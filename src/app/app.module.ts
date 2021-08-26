@@ -40,6 +40,22 @@ import { ExercisesComponent } from './components/exercises/exercises.component';
 import { WorkoutComponent } from './components/workout/workout.component';
 import { TeamPostComponent } from './components/team-post/team-post.component';
 import { TeamComponent } from './components/team/team.component';
+import { TopNavbarComponent } from './components/top-navbar/top-navbar.component';
+import { SideBarComponent } from './components/side-bar/side-bar.component';
+import { AthleteProfileComponent } from './components/athlete-profile/athlete-profile.component';
+import { SearchResultsComponent } from './components/search-results/search-results.component';
+import { AddCommentReplyComponent } from './components/add-comment-reply/add-comment-reply.component';
+import { ProfilePostsComponent } from './components/profile-posts/profile-posts.component';
+import { ProfileWorkoutsComponent } from './components/profile-workouts/profile-workouts.component';
+import { TeamPostsComponent } from './components/team-posts/team-posts.component';
+import { TeamWorkoutsComponent } from './components/team-workouts/team-workouts.component';
+import { TeamWorkoutComponent } from './components/team-workout/team-workout.component';
+import { TeamAddCommentsComponent } from './components/team-add-comments/team-add-comments.component';
+import { TeamAddCommentReplyComponent } from './components/team-add-comment-reply/team-add-comment-reply.component';
+import { TeamEditComponent } from './components/team-edit/team-edit.component';
+import { TeamMembersComponent } from './components/team-members/team-members.component';
+import { InjuryComponent } from './components/injury/injury.component';
+import { PostViewComponent } from './components/post-view/post-view.component';
 
 
 @NgModule({
@@ -71,12 +87,28 @@ import { TeamComponent } from './components/team/team.component';
     ExercisesComponent,
     TeamPostComponent,
     TeamComponent,
+    TopNavbarComponent,
+    SideBarComponent,
+    AthleteProfileComponent,
+    SearchResultsComponent,
+    AddCommentReplyComponent,
+    ProfilePostsComponent,
+    ProfileWorkoutsComponent,
+    TeamPostsComponent,
+    TeamWorkoutsComponent,
+    TeamWorkoutComponent,
+    TeamAddCommentsComponent,
+    TeamAddCommentReplyComponent,
+    TeamEditComponent,
+    TeamMembersComponent,
+    InjuryComponent,
+    PostViewComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    GraphQLModule,
+    // GraphQLModule,
     HttpClientModule,
     NgbModule,
     PickerModule,
@@ -86,17 +118,18 @@ import { TeamComponent } from './components/team/team.component';
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [
      {
-         provide: APOLLO_OPTIONS,
-         useFactory: (httpLink: HttpLink) => {
-           return {
+        provide: APOLLO_OPTIONS,
+        useFactory: (httpLink: HttpLink) => {
+          return {
             cache: new InMemoryCache(),
             link: httpLink.create({
-            uri: ' http://localhost:4000/',
+              uri: 'http://localhost:8000/graphql',
             }),
-           };
-          },
-         deps: [HttpLink],
-      }],
+          };
+        },
+        deps: [HttpLink],
+      }
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

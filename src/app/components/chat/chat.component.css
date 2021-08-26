@@ -1,9 +1,8 @@
 .mainDiv{
-    width: 100%;
+    /* width: 100%; */
     font-family: 'Times New Roman';
     display: flex;
-    height: 100%;
-    position: absolute;
+    height: 75%;
     filter: drop-shadow(2px 4px 6px black)
 }
 .hideElement{
@@ -53,7 +52,7 @@ height: 35px;
   width: fit-content;
   position: absolute;
   left: 50%;
-  top: 10%;
+  top: 100%;
   padding: 5px 20px;
   border-radius: 50px;
   transform: translate(-50%, 0px);
@@ -173,10 +172,10 @@ height: 35px;
     filter: blur(0px);
   }
   .writeMessageSection{
-    position: absolute;
-    bottom: 0px;
+    /* position: absolute; */
+    /* bottom: 0px; */
     width: 90%;
-    left: 5%;
+    /* left: 5%; */
     justify-content: center;
     display: flex;
     border: solid lightseagreen 1px;

@@ -1,11 +1,29 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { MyDataService } from './my-data.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ChatService {
+
+  API_URL = ''
     
+  constructor(private httpClient: HttpClient, private data: MyDataService){
+    this.API_URL = data.API_URL
+  }
+
+  getPersonalMessages(slug:string){
+    let headers = {'Authorization': 'Bearer ' + MyDataService.user.tokens.access}
+    return this.httpClient.get(this.API_URL + `chat/personal_messages/${slug}/`, {headers: headers})
+  }
+  
+  getTeamMessages(team_id:any){
+    let headers = {'Authorization': 'Bearer ' + MyDataService.user.tokens.access}
+    return this.httpClient.get(this.API_URL + `chat/team_messages/${team_id}/`, {headers: headers})
+  }
+
+
     messages= [
           
       {
@@ -113,37 +131,36 @@ export class ChatService {
       name:'team 4',
       id:'25'
     }]
-  constructor(private httpClient:HttpClient) {
-   }
-
-addMessage(msg:any){
-
-}
-deleteMessage(id:any){
-
-   }
-
-
-getFriends(slug:any){
-    // return     this.httpClient.get('https://peaceful-savannah-28414.herokuapp.com/' + `/${slug}/`)
-    return this.friends
- }
-getTeams(slug:any){
-  // return     this.httpClient.get('https://peaceful-savannah-28414.herokuapp.com/' + `/${slug}/`)
-  return this.teams
-}
-getPersonalMessages(slug:string){
-// return     this.httpClient.get('https://peaceful-savannah-28414.herokuapp.com/' + `chat/personal_messages/${slug}/`)
-   return this.messages
-}
-getTeamMessages(team_id:any){
-  // return     this.httpClient.get('https://peaceful-savannah-28414.herokuapp.com/' + `chat/team_messages/${team_id}/`)
-     return this.messages
-  }
   
-getCurrentUser(){
-   return this.httpClient.get<any>("/currentUser")
-  }
+
+// addMessage(msg:any){
+
+// }
+// deleteMessage(id:any){
+
+//    }
+
+
+// getFriends(slug:any){
+//     // return     this.httpClient.get('https://peaceful-savannah-28414.herokuapp.com/' + `/${slug}/`)
+//     return this.friends
+//  }
+// getTeams(slug:any){
+//   // return     this.httpClient.get('https://peaceful-savannah-28414.herokuapp.com/' + `/${slug}/`)
+//   return this.teams
+// }
+// getPersonalMessages(slug:string){
+// // return     this.httpClient.get('https://peaceful-savannah-28414.herokuapp.com/' + `chat/personal_messages/${slug}/`)
+//    return this.messages
+// }
+// getTeamMessages(team_id:any){
+//   // return     this.httpClient.get('https://peaceful-savannah-28414.herokuapp.com/' + `chat/team_messages/${team_id}/`)
+//      return this.messages
+//   }
+  
+// getCurrentUser(){
+//    return this.httpClient.get<any>("/currentUser")
+//   }
   
     
 }

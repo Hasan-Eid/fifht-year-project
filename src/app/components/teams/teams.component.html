@@ -1,4 +1,65 @@
-<div>
-  <p #p>teams works!</p>
-  <button class="btn btn-primary" (click)='change(p)'>click</button>
+<!-- Team Create -->
+<input type="file" (input)="storeImage()" #image accept="image/*" hidden>
+<ng-template #content let-modal>
+        <div class="modal-header">
+          <h4 class="modal-title" id="modal-basic-title">Team Creation</h4>
+        </div>
+        <div class="modal-body bg-primary">
+          <form #form="ngForm" (ngSubmit)="createTeam(form)">
+                <input ngModel #name="ngModel" type="text" name="name" placeholder="Team Name" class="form-control"><br>
+                <textarea ngModel #description="ngModel" name="description" placeholder="Team Description" class="form-control"></textarea><br>
+                <img [src]="imageUrl" *ngIf="imageUrl" class="m-2 w-50">
+                <span (click)="image.click()" class="btn btn-success m-1">add image</span>
+                <hr>
+                <button (click)="modal.close('')" type="submit" class="btn btn-outline-light float-right">Create</button>
+          </form>
+        </div>
+</ng-template>
+
+<div #mainDiv>
+  <div class="container text-center m-2">
+    <button class="mx-auto btn btn-primary" (click)="open(content)" style="font-size: larger;">
+            Create Team
+    </button>
+  </div>
 </div>
+
+
+
+
+<!-- Teams View -->
+<!-- <nav ngbNav #nav="ngbNav" class="nav-tabs nav-fill" style="background-color: rgba(0, 0, 0, 0.863); font-size: larger;">
+  <ng-container ngbNavItem>
+    <a ngbNavLink>My Teams</a>
+    <ng-template ngbNavContent> -->
+      <div class="row d-flex justify-content-around">
+        <div (click)="goToTeam(team.id)" *ngFor="let team of my_teams" class="card text-light col-12 col-md-5 mx-auto my-2" style="width: 18rem; background-color: rgba(0, 0, 0, 0.863);">
+          <img class="card-img-top" [src]="team.image">
+          <div class="card-body">
+            <h5 class="card-title">{{ team.name }}</h5>
+            <p class="card-text">{{ team.description }}</p>
+          </div>
+        </div>
+      </div>
+    <!-- </ng-template>
+  </ng-container> -->
+  <!-- <ng-container ngbNavItem>
+      <a ngbNavLink>Teams to Join</a>
+      <ng-template ngbNavContent>
+        <div class="row">
+          <div *ngFor="let team of teams_to_join" class="card bg-dark text-light col-12 col-md-6 col-lg-4" style="width: 18rem;">
+            <img class="card-img-top" [src]="team.image">
+            <div class="card-body">
+              <h5 class="card-title">{{ team.name }}</h5>
+              <p class="card-text">{{ team.description }}</p>
+            </div>
+            <div class="text-center my-1">
+              <button class="btn btn-success">Send Join Request</button>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+  </ng-container> -->
+<!-- </nav> -->
+
+<!-- <div [ngbNavOutlet]="nav" class="mt-2"></div> -->

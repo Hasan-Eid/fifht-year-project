@@ -1,1 +1,54 @@
-<p>friends works!</p>
+
+<nav ngbNav #nav="ngbNav" class="nav-tabs nav-fill" style="background-color: rgba(0, 0, 0, 0.863); font-size: larger;">
+  <ng-container ngbNavItem>
+    <a ngbNavLink>Friends</a>
+    <ng-template ngbNavContent>
+      <div>
+        <div *ngFor="let friend of friends" class="row text-light border border-light p-1 m-1" style="border-radius: 20px; background-color: rgba(25, 25, 235, 0.849);">
+            <div (click)="goToProfile(friend.id)" class="col-12 col-md-6">
+              <img class="rounded-circle" src="{{ friend.image }}" style="width: 25%;">
+              <span class="mx-5">{{ friend.first_name + friend.last_name }}</span>
+            </div>
+            <div class="col-12 col-md-6 my-auto">
+              <button (click)="removeFriend(friend.slug, friend)" class="btn btn-danger">Remove Friend</button>
+            </div>
+          </div>
+      </div>
+    </ng-template>
+  </ng-container>
+  <ng-container ngbNavItem>
+    <a ngbNavLink>My Sent Invites</a>
+    <ng-template ngbNavContent>
+      <div>
+        <div *ngFor="let invite of my_sent_invites" class="row text-light border border-light p-1 m-1" style="border-radius: 20px; background-color: rgba(25, 25, 235, 0.849);">
+            <div (click)="goToProfile(invite.id)" class="col-12 col-md-6">
+              <img class="rounded-circle" src="{{ invite.image }}" style="width: 25%;">
+              <span class="mx-5">{{ invite.first_name + invite.last_name }}</span>
+            </div>
+            <div class="col-12 col-md-6 my-auto">
+              <button (click)="removeInvite(invite.slug, invite)" *ngIf="my_sent_invites.includes(invite)" class="btn btn-warning">Remove Friend Request</button>
+            </div>
+          </div>
+      </div>
+    </ng-template>
+  </ng-container>
+  <ng-container ngbNavItem>
+    <a ngbNavLink>My Received Invites</a>
+    <ng-template ngbNavContent>
+      <div>
+        <div *ngFor="let invite of my_invites" class="row text-light border border-light p-1 m-1" style="border-radius: 20px; background-color: rgba(25, 25, 235, 0.849);">
+            <div (click)="goToProfile(invite.id)" class="col-12 col-md-6">
+              <img class="rounded-circle" src="{{ invite.image }}" style="width: 25%;">
+              <span class="mx-5">{{ invite.first_name + invite.last_name }}</span>
+            </div>
+            <div class="col-12 col-md-6 my-auto">
+              <button (click)="accept(invite.slug, invite)" *ngIf="my_invites.includes(invite)" class="btn btn-success">Accept</button>
+              <button (click)="reject(invite.slug, invite)" *ngIf="my_invites.includes(invite)" class="btn btn-warning">Reject</button>
+            </div>
+          </div>
+      </div>
+    </ng-template>
+  </ng-container>
+</nav>
+
+<div [ngbNavOutlet]="nav" class="mt-2"></div>

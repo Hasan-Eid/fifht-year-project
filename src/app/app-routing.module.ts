@@ -18,32 +18,58 @@ import { EditProfileComponent } from './components/edit-profile/edit-profile.com
 import { WorkoutComponent } from './components/workout/workout.component';
 import { ExercisesComponent } from './components/exercises/exercises.component';
 import { ChatComponent } from './components/chat/chat.component';
+import { AuthGuard } from './services/auth-guard.service';
+import { AthleteProfileComponent } from './components/athlete-profile/athlete-profile.component';
+import { TeamComponent } from './components/team/team.component';
+import { ProfilePostsComponent } from './components/profile-posts/profile-posts.component';
+import { ProfileWorkoutsComponent } from './components/profile-workouts/profile-workouts.component';
+import { TeamPostComponent } from './components/team-post/team-post.component';
+import { TeamWorkoutsComponent } from './components/team-workouts/team-workouts.component';
+import { TeamPostsComponent } from './components/team-posts/team-posts.component';
+import { TeamWorkoutComponent } from './components/team-workout/team-workout.component';
+import { TeamMembersComponent } from './components/team-members/team-members.component';
+import { InjuryComponent } from './components/injury/injury.component';
+import { PostComponent } from './components/post/post.component';
+import { PostViewComponent } from './components/post-view/post-view.component';
 
 const routes: Routes = [
+  { path:'injury' ,component:InjuryComponent},
+
   { path:'login' ,component:LoginComponent},
 
-  { path:'' ,component:HomeComponent},
+  { path:'' ,component:HomeComponent, canActivate:[AuthGuard]},
   { path:'main' ,component:MainComponent},
-  { path:'profile' ,component:ProfileComponent,children: [
-       { path:'edit' ,component:EditProfileComponent},
-       { path:'myProfile' ,component:MyProfileComponent},
-       { path: '', redirectTo: 'myProfile', pathMatch: 'full'}
+  { path:'profile' ,component:ProfileComponent, canActivate:[AuthGuard], children: [
+       { path:'edit' ,component:EditProfileComponent, canActivateChild:[AuthGuard]},
+       { path:'myProfile' ,component:MyProfileComponent, canActivateChild:[AuthGuard]},
+       { path: '', redirectTo: 'myProfile', pathMatch: 'full', canActivateChild:[AuthGuard]}
       ]
   },
-  { path:'signUp' ,component:SignUpComponent},
-  { path:'teams' ,component:TeamsComponent},
-  { path:'trainers' ,component:TrainersComponent},
-  { path:'workouts' ,component:WorkoutsComponent},
+  { path:'athlete/:id' ,component: AthleteProfileComponent},
+  { path:'athlete/:id/posts' ,component: ProfilePostsComponent},
+  { path:'athlete/:id/workouts' ,component: ProfileWorkoutsComponent},
+  { path:'signup' ,component:SignUpComponent},
+  { path:'teams' ,component:TeamsComponent, canActivate:[AuthGuard]},
+  { path:'team/:id' ,component:TeamComponent, canActivate:[AuthGuard]},
+  { path:'team/:id/posts' ,component: TeamPostsComponent, canActivate:[AuthGuard]},
+  { path:'team/:id/workouts' ,component: TeamWorkoutsComponent, canActivate:[AuthGuard]},
+  { path:'team/:id/members' ,component: TeamMembersComponent, canActivate:[AuthGuard]},
+  { path:'trainers' ,component:TrainersComponent, canActivate:[AuthGuard]},
+  { path:'workouts' ,component:WorkoutsComponent, canActivate:[AuthGuard]},
   { path:'aboutUs' ,component:AboutUsComponent,pathMatch: 'full'},
   { path:'contactUs' ,component:ContactUsComponent},
-  { path:'friends' ,component:FriendsComponent},
-  { path:'myPage' ,component:MyPageComponent},
-  { path:'workout' ,component:WorkoutComponent},
-  { path:'workouts' ,component:WorkoutsComponent},
-  { path:'trainer' ,component:TrainersComponent},
-  { path:'exercises' ,component:ExercisesComponent},
-  { path:'chat' ,component:ChatComponent},
-  { path:'notFound' ,component:NotFoundComponent}
+  { path:'friends' ,component:FriendsComponent, canActivate:[AuthGuard]},
+  { path:'myPage' ,component:MyPageComponent, canActivate:[AuthGuard]},
+  { path:'workout/:id' ,component:WorkoutComponent, canActivate:[AuthGuard]},
+  { path:'team/workout/:id' ,component:TeamWorkoutComponent, canActivate:[AuthGuard]},
+  { path:'workouts' ,component:WorkoutsComponent, canActivate:[AuthGuard]},
+  { path:'trainer' ,component:TrainersComponent, canActivate:[AuthGuard]},
+  { path:'exercises' ,component:ExercisesComponent, canActivate:[AuthGuard]},
+  { path:'chat' ,component:ChatComponent, canActivate:[AuthGuard]},
+
+  { path:'post/:id', component:PostViewComponent},  
+
+  { path:'**' ,component:NotFoundComponent}
 ];
 
 @NgModule({

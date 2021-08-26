@@ -1,8 +1,63 @@
-<div >
+<div class="container text-center w-75 m-auto" style="background-color:  #539cbbc6;">
+  <form #form="ngForm" (ngSubmit)="signUp(form)">
+    <img  class="user my-3" width="200" src="../assets/personal-user.png" >
+    <div class="form-group">
+      <input type="text" class="form-control" #name='ngModel' ngModel name="name" placeholder="User Name :" required email>
+      <p *ngIf='name.errors?.required&&name.touched' class="alert alert-danger">name is required !!</p>
+    </div>
+    <div class="form-group">
+      <input type="email" class="form-control" #email='ngModel' ngModel name="email" placeholder="Email :" required email>
+      <p *ngIf='email.errors?.required&&email.touched' class="alert alert-danger">email is required !!</p>
+      <p *ngIf='email.touched&&email.errors?.email' class="alert alert-danger">this input isn't email !!</p>
+    </div>
+    <div class="form-group">
+      <input type="password" class="form-control" #password='ngModel' ngModel name="password" placeholder="Password :" required minlength="6">
+      <p *ngIf='password.errors?.required&&password.touched' class="alert alert-danger">password is required !!</p>
+      <p *ngIf='password.touched&&password.errors?.minlength' class="alert alert-danger">password length is less than 6 </p>
+    </div>
+    <div class="form-group">
+      <input type="password" class="form-control" #confirm='ngModel' ngModel name="confirm" placeholder="Confirm :" required>
+      <p *ngIf='confirm.errors?.required&&confirm.touched' class="alert alert-danger">confirm password is required !!</p>
+      <p *ngIf='confirm.value!=password.value&&!confirm.errors?.required&&confirm.touched' class="error">confirm dosen't equal password </p>
+    </div>
+    <button id="submit" type="submit" class="btn w-75" [disabled]='form.invalid'>Submit</button>
+    <div class="container text-center">
+      already have account? <a class="text-dark alert-link" routerLink="/login">click here</a>
+    </div>
+  </form>
+</div>
+
+
+<div class="blurDiv"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div >
     <form #form='ngForm' (ngSubmit)='signUp(form)' >
 
         <div class=" signUp">
           <img  class="user" src="../assets/user.png" >
+          <div class="container text-center">
+            <a class="btn text-dark" routerLink="/login">already have account? click here</a>
+          </div>
           <input type="text" #name='ngModel' ngModel name="name" placeholder="User Name :" required>
            <p *ngIf='name.errors?.required&&name.touched' class="error">name is required !!</p>
           <input type="email" #email='ngModel' ngModel name="email" placeholder="Email :" required email>
@@ -20,4 +75,4 @@
         <button style="color: white;" [disabled]='form.invalid'  type="submit"  >Sign Up</button>
     </form>
   </div>
-  <div class="blurDiv"></div>
+  <div class="blurDiv"></div> -->

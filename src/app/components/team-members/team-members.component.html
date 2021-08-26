@@ -1,0 +1,51 @@
+<div class="my-2 text-center">
+    <h2 class="bg-dark text-light">{{ team.name }} Members</h2>
+    <div class="row bg-success text-light border border-light p-1 m-1" style="border-radius: 20px;">
+        <h3>Team Admin</h3>
+        <div (click)="goToProfile(team.admin_id)" class="col-12 col-md-6">
+          <img class="rounded-circle" src="{{ team.admin_data.image }}" style="width: 25%;">
+          <span class="mx-5">{{ team.admin_data.name }}</span>
+        </div>
+    </div>
+</div>
+
+
+
+<nav ngbNav #nav="ngbNav" class="nav-tabs nav-fill" style="background-color: rgba(0, 0, 0, 0.863); font-size: larger;">
+    <ng-container ngbNavItem>
+        <a ngbNavLink>Team Members</a>
+        <ng-template ngbNavContent>
+          <div>
+            <div *ngFor="let member of members" class="row bg-primary text-light border border-light p-1 m-1" style="border-radius: 20px;">
+                <div (click)="goToProfile(member.id)" class="col-12 col-md-6">
+                  <img class="rounded-circle" src="{{ member.image }}" style="width: 25%;">
+                  <span class="mx-5">{{ member.first_name + member.last_name }}</span>
+                </div>
+                <div *ngIf="is_admin" class="col-12 col-md-6 my-auto">
+                  <button (click)="removeTeamMember(member.id)" class="btn btn-warning">Remove Member</button>
+                </div>
+            </div>
+          </div>
+        </ng-template>
+    </ng-container>
+    <ng-container ngbNavItem>
+        <a ngbNavLink *ngIf="is_admin">Friends</a>
+        <ng-template ngbNavContent>
+            <div>
+            <div *ngFor="let friend of friends" class="row bg-primary text-light border border-light p-1 m-1" style="border-radius: 20px;">
+                <div *ngIf="!isTeamMember(friend.id)">
+                  <div (click)="goToProfile(friend.id)" class="col-12 col-md-6">
+                    <img class="rounded-circle" src="{{ friend.image }}" style="width: 25%;">
+                    <span class="mx-5">{{ friend.first_name + friend.last_name }}</span>
+                  </div>
+                  <div *ngIf="!members.includes(friend)" class="col-12 col-md-6 my-auto">
+                      <button (click)="addTeamMember(friend.id)" class="btn btn-success">Join</button>
+                  </div>
+                </div>
+            </div>
+            </div>
+        </ng-template>
+    </ng-container>
+  </nav>
+  
+  <div [ngbNavOutlet]="nav" class="mt-2"></div>

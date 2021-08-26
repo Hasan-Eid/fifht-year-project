@@ -1,0 +1,53 @@
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+<button (click)="toggleSidebar()" type="button" class="btn btn-danger">
+    <i class="fas fa-align-left"></i>
+</button>
+
+
+<!-- Sidebar  -->
+<nav id="sidebar" [ngClass]="{ active: sidebar_active }" class="h-75" (click)="goToTopScroll(); sidebar_active = false">
+    <ul class="list-unstyled components">
+        <li>
+            <a routerLink="/workouts">Workouts</a>
+        </li>
+        <li>
+            <a routerLink="/profile">Profile</a>
+        </li>
+        <!-- <li>
+            <a routerLink="/myPage">My Page</a>
+        </li> -->
+        <li>
+            <a routerLink="/friends">Friends</a>
+        </li>
+        <!-- <li>
+            <a routerLink="/trainers">Trainers</a>
+        </li> -->
+        <li>
+            <a routerLink="/teams">Teams</a>
+        </li>
+        <li>
+            <a routerLink="/">Posts</a>
+        </li>
+        <li>
+            <a routerLink="/chat">Chat</a>
+        </li>
+    </ul>
+</nav>
+
+
+
+
+
+
+<!-- <div class="middleDiv" >
+    <div class="btn-group leftDiv"  style="clip-path: url('#clipping')" role="group" aria-label="Basic outlined example">
+       <a   class="btn leftbutton " routerLink='profile' routerLinkActive='active2'[routerLinkActiveOptions]="{exact:true}" style="width: 245">Profile</a>
+       <a   class="btn leftbutton "routerLink='myPage' routerLinkActive='active2' [routerLinkActiveOptions]="{exact:true}" style="width: 240">My Page</a>
+       <a  class="btn leftbutton" routerLink='friends' routerLinkActive='active2' [routerLinkActiveOptions]="{exact:true}" style="width: 230px">Friends</a>
+       <a  class="btn leftbutton" routerLink='trainers'routerLinkActive='active2' [routerLinkActiveOptions]="{exact:true}" style="width: 225px">Trainers</a>
+        <a  class="btn leftbutton" routerLink='teams' routerLinkActive='active2' [routerLinkActiveOptions]="{exact:true}"style="width: 215px">Teams</a>
+       <a  class="btn leftbutton" routerLink='workouts' routerLinkActive='active2' [routerLinkActiveOptions]='{exact:true}'  style="width: 210">Worksout</a>
+    </div>
+</div> -->
+

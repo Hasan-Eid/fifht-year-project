@@ -1,0 +1,32 @@
+<div class="profile mt-1">
+    <h2>Profile Information</h2>
+    <form #form='ngForm' (ngSubmit)='editTeam(form)' >
+      <div class="row mb-1" #pd>
+        <div class="imageDiv col-12 mb-1">
+            <img #img [src]="team.image"  class="user mx-auto w-50" >
+            <div aria-label="Basic example">
+                <button type="button" #editPhoto  (click)='imgFile.click()' class="btn btn-success">Edit Photo</button>
+                <input   #imgFile    name='imgFile' accept="image/*" (change)='fileUpload(imgFile)' type="file"  hidden>
+            </div>
+        </div>
+        <div class="col-12 mb-1">
+            <fieldset class="mb-3">
+                    <legend>Team Name:</legend>
+                    <div class="row">
+                        <input #name="ngModel" [ngModel]="team.name" required name="name"  class="col-6"  placeholder="Team Name" type="text">
+                    </div>
+                    <p class="alert alert-danger" *ngIf='(name.touched&&name.invalid)'>team name is required !!</p>
+            </fieldset>
+            <fieldset class="carearDiv text-center">
+                <label for="carear" class="carear">Team Description:</label><br>
+                <textarea [ngModel]="team.description" #description='ngModel' name="description" id="description" class="w-75" cols="" rows="4"></textarea><br>
+            </fieldset>
+        </div>
+      </div>
+      <div class=' bottomDiv ' >
+           <div class="btn-group" role="group" aria-label="example">
+                <button type="submit" [disabled]='form.invalid'  class="btn btn-primary">Save Changes</button>
+          </div>
+      </div>
+    </form>
+</div>

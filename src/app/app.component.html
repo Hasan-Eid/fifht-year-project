@@ -1,1 +1,35 @@
-<app-team-post></app-team-post>
+<!-- <div>
+    <router-outlet></router-outlet>
+</div> -->
+
+<div>
+    <app-top-navbar></app-top-navbar>
+
+    <div class="d-flex justify-content-between">
+      <div *ngIf="this.as.isAuthenticated" style="position: fixed; z-index: 10; height: 100%;">
+        <app-side-bar></app-side-bar>
+      </div>
+      <div class="m-auto w-75">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+ </div>
+
+ <div class="blurDiv"></div>
+
+ <!-- <svg width='0' height='0'>
+  <defs>
+    <clipPath id="clipping">
+      <path d='M 0 0 c 270 -400 315 315 0 600'></path>
+    </clipPath>
+  </defs>
+</svg>
+<svg width='0' height='0'>
+ <defs>
+   <clipPath id="clippingForm">
+     <path d='M 0 0 C 241 107 508 116 750 -3'></path>
+   </clipPath>
+ </defs>
+</svg> -->
+
+     

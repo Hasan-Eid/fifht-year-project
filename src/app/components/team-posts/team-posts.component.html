@@ -1,0 +1,38 @@
+<button  (click)='goToTopScroll()' class="btn btn-primary float-right ml-1" style="position: fixed; right: 0; z-index: 9;">
+    <i class="bi bi-chevron-double-up"></i>
+</button>
+
+
+<input type="file" (input)="storeImages()" #images accept="image/*" multiple hidden>
+<ng-template #content let-modal>
+        <div class="modal-header">
+          <h4 class="modal-title" id="modal-basic-title">Post Creation</h4>
+        </div>
+        <div class="modal-body bg-dark">
+          <form #form="ngForm" (ngSubmit)="publishPostWithAI(form)">
+                <input ngModel #title="ngModel" type="text" name="title" placeholder="Post Title" class="form-control" required><br>
+                <textarea ngModel #content="ngModel" name="content" placeholder="Post Content" class="form-control" required></textarea><br>
+                <img [src]="im" *ngFor="let im of imagesURLs" class="m-2 w-50">
+                <button (click)="images.click()" class="btn btn-primary m-1">add images</button>
+                <hr>
+                <button type="submit" class="btn btn-outline-light float-right">Post</button>
+          </form>
+        </div>
+</ng-template>
+
+
+<div class="container text-center">
+    <button class="mx-auto btn" (click)="open(content)" style="background-color:  #3a3f3fb0; color: white;">
+            You have a new sport information ? share it
+    </button>
+</div>
+
+<div #mainDiv>
+    <div class="">
+        <app-team-post *ngFor="let post of posts" [post]="post" [team_id]="team_id"></app-team-post>
+    </div>
+    <div *ngIf="posts.length === 0" class="alert alert-danger text-center">No Posts Found</div>
+    <div class="text-center">
+      <a (click)="getMorePosts()" class="btn btn-primary text-light m-3">More</a>
+    </div>
+</div>

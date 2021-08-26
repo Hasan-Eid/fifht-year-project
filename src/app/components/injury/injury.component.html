@@ -1,0 +1,65 @@
+<div class="mt-2 p-3" style="background-color: rgba(0, 0, 0, 0.809); color: white; box-shadow: 0px 0px 5px; border: solid 3px #2e86bb;">
+    <form (ngSubmit)='predictRecoveryPeriod()'>
+        <div class="container row d-flex justify-content-around">
+            <div class="form-group col-6">
+                <label for="calorie">Calories</label>
+                <input [(ngModel)]="injury_data.calorie" type="number" max="3500" min="1000" class="form-control" name="calorie" id="calorie" placeholder="Calories' Average eaten everyday" required>
+            </div>
+            <div class="form-group col-6">
+                <label for="age">Age</label>
+                <input [(ngModel)]="injury_data.age" type="number" max="35" min="12" class="form-control" name="age" id="age" placeholder="Your Age" required>
+            </div>
+            <div class="form-group col-6">
+                <label for="weight">Weight</label>
+                <input [(ngModel)]="injury_data.weight" type="number" max="80" min="40" class="form-control" name="weight" id="weight" placeholder="Your Weight" required>
+            </div>
+            <div class="form-group col-6">
+                <label for="gender">Gender</label>
+                <select [(ngModel)]="injury_data.gender" class="form-control" name="gender" id="gender" required>
+                    <option value="0">M</option>
+                    <option value="1">F</option>
+                </select>
+            </div>
+            <div class="form-group col-12">
+                <label for="injury">Injury</label>
+                <select [(ngModel)]="injury_data.injury" class="form-control" name="injury" id="injury" required>
+                    <option value="0">Toe Injury</option>
+                    <option value="1">Hamstring Niggle</option>
+                    <option value="2">Knee Niggle</option>
+                    <option value="3">Finger Injury</option>
+                    <option value="4">Thigh Injury</option>
+                    <option value="5">Tennis Elbow</option>
+                    <option value="6">Ankle Injury</option>
+                    <option value="7">Shoulder Injury</option>
+                    <option value="8">Swelling</option>
+                </select>
+            </div>
+            <div class="form-group col-12">
+                <label for="type">Injury Type</label>
+                <select [(ngModel)]="injury_data.type" class="form-control" name="type" id="type" required>
+                    <option value="0">major</option>
+                    <option value="1">minor</option>
+                </select>
+            </div>
+        </div>
+        <div class="text-center">
+            <button class="btn btn-outline-success w-50" type="submit">Analyze</button>
+        </div>
+    </form>
+</div>
+
+<div *ngIf="recovery_period !== 0" class="mt-4 container text-center h-100" style="background-color: rgba(0, 0, 0, 0.809); color: white; box-shadow: 0px 0px 5px; border: solid 3px green;">
+    <h3>you need {{recovery_period}} days to recover</h3><br>
+    <h4>this videos will help you: </h4><br>
+    <iframe style="width: 80%; height: 50vh;" src="https://www.youtube.com/embed/O1VHcuyvI04" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe style="width: 80%; height: 50vh;" *ngIf="injury_data.injury == 0" src="https://www.youtube.com/embed/y14b9yAsWyQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe style="width: 80%; height: 50vh;" *ngIf="injury_data.injury == 1" src="https://www.youtube.com/embed/GJgEgNY8KDQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe style="width: 80%; height: 50vh;" *ngIf="injury_data.injury == 2" src="https://www.youtube.com/embed/videoseries?list=PLifdNn11VRE-y8wrTfrS6Ddc2pkCSLzHw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe style="width: 80%; height: 50vh;" *ngIf="injury_data.injury == 3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe style="width: 80%; height: 50vh;" *ngIf="injury_data.injury == 4" src="https://www.youtube.com/embed/u3n1RYa8QfY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe style="width: 80%; height: 50vh;" *ngIf="injury_data.injury == 5" src="https://www.youtube.com/embed/pJlMWSO33Qo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe style="width: 80%; height: 50vh;" *ngIf="injury_data.injury == 6" src="https://www.youtube.com/embed/OJUbJYuPBRY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe style="width: 80%; height: 50vh;" *ngIf="injury_data.injury == 7" src="https://www.youtube.com/embed/videoseries?list=PLifdNn11VRE_gfS_lVoYoQK21vAm_5Eca" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe style="width: 80%; height: 50vh;" *ngIf="injury_data.injury == 8" src="https://www.youtube.com/embed/3o-_seszOCA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+</div>

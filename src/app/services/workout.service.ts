@@ -1,37 +1,75 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { MyDataService } from './my-data.service';
+import { isJSDocReturnTag } from 'typescript';
 
 @Injectable({
   providedIn: 'root'
 })
 export class WorkoutService {
 
-  constructor(private httpClient:HttpClient) { }
+  API_URL = ''
+  
+
+  constructor(private httpClient:HttpClient, data: MyDataService) {
+    this.API_URL = data.API_URL
+   }
 
   getExercises(){
-    return     this.httpClient.get('https://peaceful-savannah-28414.herokuapp.com/' + 'workout/exercise/list/')
- }
+    let headers = {'Authorization': 'Bearer ' + MyDataService.user.tokens.access}
+    return this.httpClient.get(this.API_URL + 'workout/exercise/list', 
+                                  {headers: headers})
+  }
+
  getExercise(id:any){
-  return     this.httpClient.get('https://peaceful-savannah-28414.herokuapp.com/' + `workout/exercise/detail/${id}`)
-}
+  let headers = {'Authorization': 'Bearer ' + MyDataService.user.tokens.access}
+  let response = this.httpClient.get(this.API_URL + `workout/exercise/detail/${id}`, 
+                                {headers: headers})
+  return response
+  }
+
 deleteExercise(id:any){
-  return     this.httpClient.delete('https://peaceful-savannah-28414.herokuapp.com/' + `workout/exercise/detail/${id}`)
+  let headers = {'Authorization': 'Bearer ' + MyDataService.user.tokens.access}
+  return this.httpClient.delete(this.API_URL + `workout/exercise/detail/${id}`, 
+                                  {headers: headers})
 }
-getWorkouts(page:any){
-  return     this.httpClient.get('https://peaceful-savannah-28414.herokuapp.com/'+`workout/workouts?page=${page}`)
+
+getWorkouts(page: number){
+  let headers = {'Authorization': 'Bearer ' + MyDataService.user.tokens.access}
+  return this.httpClient.get(this.API_URL+`workout/workouts?page=${page}`, 
+                                {headers: headers})
 }
+
+getAthleteWorkouts(athlete_id: any, page: number){
+  let headers = {'Authorization': 'Bearer ' + MyDataService.user.tokens.access}
+  return this.httpClient.get(this.API_URL+`workout/workouts/${athlete_id}?page=${page}`, 
+                                {headers: headers})
+}
+
+getWorkout(id: string){
+  let headers = {'Authorization': 'Bearer ' + MyDataService.user.tokens.access}
+  return this.httpClient.get(this.API_URL + `workout/${id}`, 
+                                {headers: headers})
+}
+
 deleteWorkout(id:any){
-  return     this.httpClient.delete('https://peaceful-savannah-28414.herokuapp.com/' + `workout/delete/${id}`)
+  let headers = {'Authorization': 'Bearer ' + MyDataService.user.tokens.access}
+  return this.httpClient.delete(this.API_URL + `workout/delete/${id}`, 
+                                  {headers: headers})
 }
 
 createExercise(exercise:any){
-  return     this.httpClient.post('https://peaceful-savannah-28414.herokuapp.com/' + `workout/exercise/create/`,exercise)
-
-}
-createWorkout(Workout:any){
-  return     this.httpClient.post('https://peaceful-savannah-28414.herokuapp.com/' + `workout/create/`,Workout)
-
+  let headers = {'Authorization': 'Bearer ' + MyDataService.user.tokens.access}
+  return this.httpClient.post(this.API_URL + `workout/exercise/create/`, 
+                                  exercise, 
+                                  {headers: headers})
 }
 
+createWorkout(workout: any){
+  let headers = {'Authorization': 'Bearer ' + MyDataService.user.tokens.access}
+  return this.httpClient.post(this.API_URL + `workout/create`, 
+                                  workout, 
+                                  {headers: headers})
+}
 
 }

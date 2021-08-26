@@ -1,0 +1,17 @@
+
+<div class="w-100">
+    <div   *ngFor='let workout of workouts' class="m-2 p-2 rounded border-light shadow" style="background-color: #000000cd; color: white;">
+            <div class="row">
+                    <div class="col-10 col-lg-5 ml-2">
+                            <h3>{{workout.title}}</h3>
+                            <p>{{workout.description}}</p>
+                    </div>
+                    <div class="col-10 col-lg-5 text-center my-auto">
+                            <button (click)='goToWorkout(workout.id)' class="btn btn-outline-success">Run Workout</button>
+                    </div>
+                </div>
+    </div>
+    <div class="text-center">
+        <a class="btn btn-primary text-light m-3" (click)='moreWorkouts()'>More</a>
+    </div>
+</div>

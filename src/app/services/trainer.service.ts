@@ -2,11 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { observable, of } from 'rxjs';
 import { from } from 'zen-observable';
+import { MyDataService } from './my-data.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TrainerService {
+
+  API_URL = ''
+
   trainers=[{
     id:1,
     profile:5,
@@ -153,7 +157,13 @@ export class TrainerService {
     follow:false
   }
   ]
-  constructor(private httpClient:HttpClient) { }
+  constructor(private httpClient:HttpClient, private data: MyDataService) {
+    this.API_URL = data.API_URL
+   }
+
+  getTrainerById(id: any){
+    return this.httpClient.get(this.API_URL +`trainer/retrieve/${id}`)
+  }
   
   getTrainers(page:any) {
     let pageOfTrainers=[]

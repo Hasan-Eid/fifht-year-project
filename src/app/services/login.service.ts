@@ -18,7 +18,8 @@ export class LoginService {
     //           password: password
     //         })
     //       })
-    return this.httpClient.post('https://peaceful-savannah-28414.herokuapp.com/' + 'auth/login/',{email: email,password: password})
+    return this.httpClient.post('https://peaceful-savannah-28414.herokuapp.com/' + 'auth/login/',
+                                {email: email,password: password})
           
   }
 }

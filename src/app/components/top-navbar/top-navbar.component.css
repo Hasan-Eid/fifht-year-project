@@ -1,0 +1,14 @@
+#TopNavbar {
+    height: 5rem;
+    border-bottom-left-radius: 30% 30%;
+    border-bottom-right-radius: 40% 100%;
+    color: white;
+    background-color: yellow;
+}
+
+#SearchNavbar {
+    border-bottom-left-radius: 40% 100%;
+    border-bottom-right-radius: 10% 20%;
+    color: white;
+    background-color: skyblue;
+}

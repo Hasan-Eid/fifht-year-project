@@ -1,0 +1,195 @@
+<div class="row mw-100">
+
+    <!-- Large Screen Navbar -->
+    <nav class="col-md-8 navbar navbar-expand-md navbar-light justify-content-center d-none d-md-flex" id="TopNavbar">
+        <a class="navbar-brand" routerLink="/">
+          <img width="70" src="../../../assets/ss1.png" alt="" class="ml-5">
+        </a>
+        <button (click)="toggleNavbar()" [class.collapsed] = "isClose" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" [attr.aria-expanded]="isOpen" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" [class.show]="isOpen" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item" *ngIf="this.as.isAuthenticated">
+                <a class="nav-link" routerLink='' routerLinkActive='active' [routerLinkActiveOptions]="{exact:true}">Home</a>
+            </li>
+            <li>
+                <a class="nav-link" routerLink="injury" routerLinkActive='active'>Injury</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink='contactUs' routerLinkActive='active' [routerLinkActiveOptions]="{exact:true}">Contact</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" routerLink='aboutUs' routerLinkActive='active' [routerLinkActiveOptions]="{exact:true}">About</a>
+            </li>
+            <li class="nav-item" *ngIf="!this.as.isAuthenticated">
+              <button routerLink='login' class="nav-link btn btn-success text-light ml-2">Log in</button>
+            </li>
+            <li class="nav-item" *ngIf="!this.as.isAuthenticated">
+              <button routerLink='signup' class="nav-link btn btn-primary text-light ml-2">Sign up</button>
+            </li>
+            <li class="nav-item" *ngIf="this.as.isAuthenticated">
+                <button (click)="logout()" class="nav-link btn btn-danger ml-2">Log out</button>
+            </li>
+          </ul>
+        </div>
+    </nav>
+
+    <nav class="col-md-4 navbar navbar-expand-lg navbar-light d-none d-md-flex" id="SearchNavbar">
+        <div class="w-100" id="navbarSupportedContent">
+          <form #form="ngForm" class="form-inline">
+            <button (click)="search()" class="w-25 btn btnSearch friendsHide" type="button" >
+                <i class="bi bi-search"></i>
+            </button>
+            <input (blur)="search_results = {workouts: [], profiles: [], posts: []}" name="keyword" [(ngModel)]="keyword" class="form-control mr-sm-2" style="width: 70%;" type="search" placeholder="Search" aria-label="Search">
+            <div *ngIf="keyword !== ''" (click)="keyword = ''; search_results = {workouts: [], profiles: [], posts: []}" class="mh-50 w-100 rounded" style="background-color: rgba(0, 0, 0, 0.809); color: white;">
+              <div *ngIf="search_results.workouts.length !== 0">
+                <hr>
+                <h3>Workouts</h3>
+                <hr>
+              </div>
+              <div *ngFor="let w of search_results.workouts" class="m-2">
+                <h4 class="text-primary"><a routerLink="workout/{{w.node.id}}">{{ w.node.title }}</a></h4>
+              </div>
+              <hr>
+              <div *ngIf="search_results.profiles.length !== 0">
+                <hr>
+                <h3>Profiles</h3>
+                <hr>
+              </div>
+              <div *ngFor="let p of search_results.profiles" class="m-2">
+                <h4 class="text-primary"><a routerLink="athlete/{{p.node.id}}">{{ p.node.first_name + ' ' + p.node.last_name }}</a></h4>
+              </div>
+              <hr>
+              <div *ngIf="search_results.posts.length !== 0">
+                <hr>
+                <h3>Posts</h3>
+                <hr>
+              </div>
+              <div *ngFor="let p of search_results.posts" class="m-2">
+                <h4 class="text-primary"><a routerLink="/post/{{p.node.id}}">{{ p.node.title }}</a></h4>
+              </div>
+            </div>
+          </form>
+        </div>
+    </nav>
+</div>
+
+
+
+<div class="row d-flex justify-content-around mw-100">
+  <!-- Small Screen Navbar -->
+  <nav class="w-100 navbar navbar-expand-lg navbar-light d-flex d-md-none" style="color: white; background-color: skyblue;">
+    <div class="w-100" id="navbarSupportedContent">
+      <form class="form-inline">
+        <button (click)="search()" class="w-25 btn btnSearch friendsHide" type="button" >
+            <i class="bi bi-search"></i>
+        </button>
+        <input (blur)="search_results = {workouts: [], profiles: [], posts: []}" name="keyword" [(ngModel)]="keyword" class="form-control mr-sm-2" style="width: 70%;" type="search" placeholder="Search" aria-label="Search">
+        <div *ngIf="keyword !== ''" (click)="keyword = ''; search_results = {workouts: [], profiles: [], posts: []}" class="mh-50 w-100 rounded" style="background-color: rgba(0, 0, 0, 0.809); color: white;">
+          <div *ngIf="search_results.workouts.length !== 0">
+            <hr>
+            <h3>Workouts</h3>
+            <hr>
+          </div>
+          <div *ngFor="let w of search_results.workouts" class="m-2">
+            <h4 class="text-primary"><a routerLink="workout/{{w.node.id}}">{{ w.node.title }}</a></h4>
+          </div>
+          <hr>
+          <div *ngIf="search_results.profiles.length !== 0">
+            <hr>
+            <h3>Profiles</h3>
+            <hr>
+          </div>
+          <div *ngFor="let p of search_results.profiles" class="m-2">
+            <h4 class="text-primary"><a routerLink="athlete/{{p.node.id}}">{{ p.node.first_name + ' ' + p.node.last_name }}</a></h4>
+          </div>
+          <hr>
+          <div *ngIf="search_results.posts.length !== 0">
+            <hr>
+            <h3>Posts</h3>
+            <hr>
+          </div>
+          <div *ngFor="let p of search_results.posts" class="m-2">
+            <h4 class="text-primary"><a routerLink="/post/{{p.node.id}}">{{ p.node.title }}</a></h4>
+          </div>
+        </div>
+      </form>
+    </div>
+  </nav>
+
+  <nav class="w-100 navbar navbar-expand-sm navbar-light d-flex d-md-none justify-content-around" style="background-color: yellow;">
+    <!-- <a class="navbar-brand" routerLink="/" style="font-size: x-large; font-weight: bolder;">SpotSport</a> -->
+    <img width="70" src="../../../assets/ss1.png" alt="">
+    <button (click)="toggleNavbar()" [class.collapsed] = "isClose" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" [attr.aria-expanded]="isOpen" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse p-3" [class.show]="isOpen" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item" *ngIf="is_auth">
+            <a class="nav-link" routerLink=''routerLinkActive='active' [routerLinkActiveOptions]="{exact:true}">Home</a>
+        </li>
+        <li>
+          <a class="nav-link" routerLink="injury" routerLinkActive='active'>Injury</a>
+      </li>
+        <li class="nav-item">
+            <a class="nav-link" routerLink='contactUs' routerLinkActive='active' [routerLinkActiveOptions]="{exact:true}">Contact</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link" routerLink='aboutUs' routerLinkActive='active' [routerLinkActiveOptions]="{exact:true}">About</a>
+        </li>
+        <li class="nav-item">
+            <button (click)="logout()" class="nav-link btn btn-danger">Log out</button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="topDiv">
+    <nav class="navbar navbar-expand-lg navbar-light topNavbar">
+        <a class="navbar-brand"  >Sport World</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item ">
+                <a class="nav-link" routerLink=''routerLinkActive='active1' [routerLinkActiveOptions]="{exact:true}">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink='contactUs' routerLinkActive='active1' [routerLinkActiveOptions]="{exact:true}">Contact Us</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" routerLink='aboutUs' routerLinkActive='active1' [routerLinkActiveOptions]="{exact:true}">About As</a>
+                </li>
+                <li class="nav-item">
+                  <button (click)="logout()" class="nav-link btn btn-danger">Log out</button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <form  class="form-inline my-2 friendsHide col-3" style="clip-path: url(#clippingForm);z-index: 2;">
+      <div class="input-group mb-3 friendsHide divInsideForm">
+        <button class="btn btnSearch friendsHide " type="button" >
+          <i class="bi bi-search"></i>
+        </button>
+        <input name='search'  #search='ngModel'ngModel class=" friendsHide form-control  search" type="search"  placeholder="search..." aria-label="Search">
+      </div>
+    </form>
+</div> -->

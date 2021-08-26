@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ApolloServiceService } from 'src/app/services/apollo-service.service';
+import { MyDataService, Profile } from 'src/app/services/my-data.service';
 
 @Component({
   selector: 'app-my-profile',
@@ -8,12 +9,15 @@ import { ApolloServiceService } from 'src/app/services/apollo-service.service';
 })
 export class MyProfileComponent implements OnInit {
   @Output() chooseProfile = new EventEmitter<string>();
-  myProfile:any=[];
+  myProfile: Profile = MyDataService.myProfile;
 
   i='sports.jpg'
-  constructor(private as:ApolloServiceService) { }
 
-  ngOnInit(): void {    
+  constructor(private as:ApolloServiceService, private data: MyDataService) {
+    this.myProfile = MyDataService.myProfile
+   }
+
+  ngOnInit(): void { 
     // this.as.getMyProfile('1').valueChanges.subscribe(({data})=>{
     //    console.log(data)
     //   this.myProfile=data.myProfile

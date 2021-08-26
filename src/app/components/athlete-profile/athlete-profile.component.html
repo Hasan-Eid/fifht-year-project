@@ -1,0 +1,38 @@
+<div>
+    <button (click)="sendInvite(profile.slug)" *ngIf="!friends.includes(profile) && !my_sent_invites.includes(profile) && !my_invites.includes(profile) && profile.id !== myProfile.id" class="btn btn-success">Send Friend Request</button>
+    <button (click)="removeInvite(profile.slug)" *ngIf="my_sent_invites.includes(profile)" class="btn btn-warning">Remove Friend Request</button>
+    <button (click)="removeFriend(profile.slug)" *ngIf="friends.includes(profile)" class="btn btn-danger">Remove Friend</button>
+    <button (click)="accept(profile.slug)" *ngIf="my_invites.includes(profile)" class="btn btn-success">Accept</button>
+    <button (click)="reject(profile.slug)" *ngIf="my_invites.includes(profile)" class="btn btn-warning">Reject</button>
+</div>
+
+<div class="mainDiv container w-100 mb-5"  id="mainDiv">
+    <div class="topDiv row mb-3">
+        <div class="nameDiv col-12 text-center">
+            <img class="profileImage rounded-circle w-50" [src]="profile.image">
+            <h5 class="text-center" style="font-size: xx-large; background-color: rgba(255, 255, 255, 0.857);"> {{profile.first_name +' '+profile.last_name}} </h5>
+       </div>
+
+        <div class="col-6 text-center mx-auto my-auto">
+            <a routerLink="/athlete/{{profile.id}}/posts"><button class="postButton btn w-100">Posts</button></a>
+        </div>
+        <!-- <button (click)='photos()'>Photos</button> -->
+        
+        <!-- <button (click)='videos()'>Videos</button> -->
+        <div class="col-6 text-center mx-auto my-auto" style="font-size: 50%;">
+            <a routerLink="/athlete/{{profile.id}}/workouts"><button class="workoutsButton btn w-100">Workouts</button></a>
+        </div>
+    </div>
+    
+    <div class="bottomDiv row">
+            <div class="career col-12 col-md-6">
+                <h4>career</h4>
+                <div >{{profile.carear}} </div>
+            </div>
+            <div class="hobbies col-12 col-md-6">
+                <h4>hobbies</h4>
+                <div > {{profile.hobbies}}</div>
+            </div>
+        
+    </div>
+</div>

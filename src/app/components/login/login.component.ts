@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AthleteService } from 'src/app/services/athlete.service';
 import { AuthService } from 'src/app/services/auth.service';
+import { MyDataService, Profile, User } from 'src/app/services/my-data.service';
 
 
 @Component({
@@ -10,25 +13,19 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private ls: AuthService) { }
+  constructor(private router: Router, private as: AuthService, private athleteService: AthleteService) { }
 
   ngOnInit(): void {
+    console.log(this.as.isRouteAuthenticated())
   }
+
   onSubmit(form:NgForm){
     this.login(form)
   }
 
   login(form: any){
     let data = form.value;
-    this.ls.login(data.email, data.password).subscribe((response)=>{
-      console.log(response)
-
-    })
-      // .then(response => response.json())
-      // .then(res => {
-      //   console.log(res)
-      //   // this.router.navigate(['/']);
-      //   })
+    this.as.login(data.email, data.password)
   }
 
 

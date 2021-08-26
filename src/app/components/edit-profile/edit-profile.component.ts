@@ -2,6 +2,7 @@ import { Component, OnInit, EventEmitter, Output, ViewChild, ElementRef } from '
 import { NgForm, NgModel } from '@angular/forms';
 import { ApolloServiceService } from 'src/app/services/apollo-service.service';
 import { AthleteService } from 'src/app/services/athlete.service';
+import { MyDataService, Profile } from 'src/app/services/my-data.service';
 
 @Component({
   selector: 'app-edit-profile',
@@ -9,6 +10,9 @@ import { AthleteService } from 'src/app/services/athlete.service';
   styleUrls: ['./edit-profile.component.css']
 })
 export class EditProfileComponent implements OnInit {
+
+  myProfile: Profile = MyDataService.myProfile
+
   @Output() chooseProfile = new EventEmitter<string>();
   
   @ViewChild("img")
@@ -19,7 +23,7 @@ export class EditProfileComponent implements OnInit {
   thisYear:number=0;
   yearInvalid:boolean=false;
   dayInvalid:boolean=false;
-  myProfile:any={}
+  // myProfile:any={}
   constructor( private apolloService: ApolloServiceService,private athleteService:AthleteService) { }
   
   ngOnInit(): void {
@@ -40,12 +44,7 @@ export class EditProfileComponent implements OnInit {
     this.dayInvalid=this.evenMonths.includes(selectmonth.value)?(day.value>31||day.value<1):(day.value>30||day.value<1);
   }
 
-   fileUpload(images:any){
-      let image=images.files[0];
-      let url = URL.createObjectURL(image);
-      this.img.nativeElement.src=url
-       
-   }  
+   
 
    saveChanges(f:NgForm,img:any){
     // here we prepare data  and send it
@@ -61,10 +60,38 @@ export class EditProfileComponent implements OnInit {
 
   } 
   
-   selectMonth(select:HTMLSelectElement){
-    select.style.color='#d83ea9'
-   }
-   
+  selectMonth(select:HTMLSelectElement){
+  select.style.color='#d83ea9'
+  }
+  
+  image: any
+  setImage(file: any){
+  this.image = file;
+}
+
+  fileUpload(images:any){
+    let image=images.files[0];
+    this.image = image
+    let url = URL.createObjectURL(image);
+    this.img.nativeElement.src=url
+  }  
  
+  editProfile(form: NgForm){
+    let values = form.value
+    const formData = new FormData();
+    formData.append('first_name', values.first);
+    formData.append('last_name', values.last);
+    if(values.hobbies)
+      formData.append('hobbies', values.hobbies);
+    if(values.carear)
+      formData.append('carear', values.carear);
+    if(this.image)
+      formData.append('image', this.image);
+    this.athleteService.editProfile(this.myProfile.slug, formData).subscribe((res) => {
+    }, 
+    (err) => {
+      console.log(err)
+    })
+  }
 
 }

@@ -1,12 +1,58 @@
+<div class="d-flex justify-content-end">
+    <a rorouterLink='edit' (click)='toMyProfile()' routerLinkActive='active2'[routerLinkActiveOptions]="{exact:true}">
+        <img class="w-50 btn" src="../../../assets/edit user.png" style="background-color: rgba(255, 255, 255, 0.829);">
+    </a>
+</div>
 
+
+<div class="mainDiv container w-100 mb-5"  id="mainDiv">
+    <div class="topDiv row mb-3">
+        <div class="nameDiv col-12 text-center">
+            <img class="profileImage rounded-circle w-50" [src]="myProfile.image">
+            <h5 class="text-center" style="font-size: xx-large; background-color: rgba(255, 255, 255, 0.857);"> {{myProfile.first_name +' '+myProfile.last_name}} </h5>
+       </div>
+
+        <div class="col-6 text-center mx-auto my-auto">
+            <a routerLink="/athlete/{{myProfile.id}}/posts"><button (click)='posts()' class="postButton btn w-100">Posts</button></a>
+        </div>
+        <!-- <button (click)='photos()'>Photos</button> -->
+        
+        <!-- <button (click)='videos()'>Videos</button> -->
+        <div class="col-6 text-center mx-auto my-auto" style="font-size: 50%;">
+            <a routerLink="/athlete/{{myProfile.id}}/workouts"><button (click)='workouts()' class="workoutsButton btn w-100">Workouts</button></a>
+        </div>
+    </div>
+    
+    <div class="bottomDiv row">
+            <div class="career col-12 col-md-6">
+                <h4>career</h4>
+                <div >{{myProfile.carear}} </div>
+            </div>
+            <div class="hobbies col-12 col-md-6">
+                <h4>hobbies</h4>
+                <div > {{myProfile.hobbies}}</div>
+            </div>
+        
+    </div>
+</div>
+<!-- <div class='blurDiv'></div> -->
+
+
+
+
+
+
+
+
+<!-- 
 <div class="mainDiv"  id="mainDiv">
     <div class="topDiv">
         <button (click)='posts()' class="postButton">Posts</button>
         <button (click)='photos()'>Photos</button>
         <div class="nameDiv">
-             <!-- <img [src]="myProfile?.image" > -->
-             <img class="profileImage" [src]="'../../../assets/'+i" >
-             <h5> {{myProfile?.first_name +' '+myProfile?.last_name}} </h5>
+             <img [src]="myProfile?.image" >
+             <img class="profileImage" [src]="myProfile.image" >
+             <h5> {{myProfile.first_name +' '+myProfile.last_name}} </h5>
         </div>
         <button (click)='videos()'>Videos</button>
         <button (click)='workouts()' class="workoutsButton">Workouts</button>
@@ -18,13 +64,13 @@
     <div class="bottomDiv">
             <div class="career">
                 <h4>career</h4>
-                <div >{{myProfile?.career}} </div>
+                <div >{{myProfile.carear}} </div>
             </div>
             <div class="hobbies">
                 <h4>hobbies</h4>
-                <div > {{myProfile?.hobbies}}</div>
+                <div > {{myProfile.hobbies}}</div>
             </div>
         
     </div>
-</div>
-<div class='blurDiv'></div>
+</div> -->
+<!-- <div class='blurDiv'></div> -->

@@ -1,10 +1,118 @@
-<div>
+<div class="row m-2">
+  <div class="col-12 col-lg-7 container mt-3 mx-auto rounded shadow border border-primary" style="background-color: #000000cd;">
+  
+    <div *ngIf="post.poster.id == myProfile.id" (click)='clickOnOptionMenu($event)' ngbDropdown class="float-right">
+            <i class="bi bi-three-dots btn btn-outline-light" id="dropdownBasic1" ngbDropdownToggle></i>
+
+            <div  ngbDropdownMenu class="options" aria-labelledby="dropdownBasic1">
+                <button (click)='deletePost()' ngbDropdownItem>Delete</button>
+            </div>
+    </div>
+
+    <div class="text-light border-bottom border-light p-1 m-1">
+      <a (click)="goToProfile(post.poster.id)">
+        <img class="rounded-circle" src="{{ post.poster_data.image }}" style="width: 13%; border: solid 3px #0dc8ee">
+        <span class="mx-2">{{ post.poster_data.name }}</span>
+        <span class="m-1 float-right">
+                <i class="bi bi-watch"></i>
+                <span>{{ DateDiff.diff(DateDiff.toDate(post.date), DateDiff.now()) }}</span>
+        </span>
+      </a>
+    </div>
+    
+    <!-- <hr class="border-light w-100"> -->
+  
+    <div class="m-1 text-light">
+      <div #secondSectionOfPost class="container row" >
+        <div class="col-10 mx-auto">
+          <h3 class="text-center">{{ post.title }}</h3>
+          <p #content id='content' [class.hideElement]="post.content==''" class="content" >
+            {{post.content}}
+          </p>
+        </div>
+        <div class="col-10 mx-auto">
+          <img class="w-100" [src]="post.images[0]" alt="">
+        </div>
+        <!-- <div *ngIf='post.images.length>0' class="col-10 col-lg-6">
+          <div (click)='goTocarousel(secondSectionOfPost,viewMoreDiv)' class=""  *ngIf='post.images.length>=3' >
+              <div>
+                  <a *ngFor='let im of post.images|fisrtImages;  let i=index; let o= odd; let e=even;'>
+                      <img class=""[class.postImagesClass]="i!=0"	  *ngIf='e' [src]="im" >
+                  </a>
+              </div>
+              <div class="" >
+                  <a *ngFor='let im of post.images|fisrtImages;let i=index; let e=even;'>
+                      <img class="" [class.postImagesClass]="i!=1" *ngIf='!e' [src]="im" >
+                  </a>
+              </div>
+              <span class="" *ngIf='post.images.length>4'> <span>+</span> {{post.images.length-4}}</span>
+          </div>
+          <div (click)='goTocarousel(secondSectionOfPost,viewMoreDiv)' [class]="{bigImageSectionContent:post.content==''} "  class=""  *ngIf='post.images.length==2' >
+            <img class="" [class]="{bigBinaryPostImages:post.content=='',binaryPostImages:post.content!=''} "  [src]="post.images[0]" >
+            <img class=""[class]="{bigBinaryPostImages:post.content=='',binaryPostImages:post.content!=''} "  style="margin-left: -40px"  [src]="post.images[1]" >
+          </div>
+          <div  class="" [class]="{bigImageSectionContent:post.content==''} " *ngIf='post.images.length==1' >
+            <img (click)='goTocarousel(secondSectionOfPost,viewMoreDiv)' class="" [class]="{bigOnePostImage:post.content=='',onePostImage:post.content!=''} "  [src]="post.images[0]" >
+          </div>
+        </div>
+      </div>
+      <div  #viewMoreDiv (click)='viewMore(content,aViewMore)' [class]="{hideElement:!contentHeight(content),shown:contentHeight(content)}"  class="viewMore">
+        <a #aViewMore >.. view More ..</a>                            
+      </div> 
+      <ngb-carousel *ngIf="post.images&&showImages" [interval]='5000'>
+        <ng-template *ngFor='let im of post.images' ngbSlide>
+            <div class="picsum-img-wrapper">
+              <img style="object-fit: contain" width="575"  height="350" [src]="im" alt="Random third slide">
+            </div>
+            <div class="carousel-caption">
+                <a (click)='back(secondSectionOfPost,viewMoreDiv,content)' class="arrow">
+                        <i class="bi bi-arrow-left"></i>
+                </a>
+            </div>
+          </ng-template>
+      </ngb-carousel> -->
+    </div>
+
+    <hr class="border-light">
+
+
+    <div class="row text-center text-light" style="font-size: xx-large;"> 
+      <div class="col-6">
+          <span class="">{{post.like.likes}}</span>
+          <button class="btn" style="font-size: xx-large;">
+            <i (click)="like_unlike()" [ngClass]="{'text-light': !post.like.isLiked, 'text-primary': post.like.isLiked}" class="bi bi-hand-thumbs-up"></i>
+          </button>
+        </div>
+      <div class="col-6">
+        <span class="">{{msg}}</span>
+        <button class="btn" style="font-size: xx-large;">
+          <i (click)='showComment(post.id)' class="text-light bi bi-chat-fill"></i>
+        </button>
+      </div>
+      <!-- <div class="col-4">
+          <span  class="num">{{post.share.shares}}</span>
+          <button class="btn" style="font-size: xx-large;">
+            <i (click)="share()" [ngClass]="{'text-light': !post.share.isShared, 'text-success': post.share.isShared}" class="bi bi-share"></i>
+          </button>
+        </div> -->
+    </div>
+
+    <div>
+      <app-add-comments [post]="post" (callParent)="getMsgFromBaby($event)"></app-add-comments>
+    </div>
+
+  </div>
+</div>
+
+
+
+<!-- <div>
    <div  >
          <div class="post">
                  <div class="postHearder">
-                     <img  class='atheletImage' src="../../../assets/user.png" >
+                     <img  class='atheletImage' src="{{ post.poster_data.image }}" >
                      <div class="athleteName">
-                       <h6>Hasan Eid</h6>
+                       <h6>{{ post.poster_data.name }}</h6>
                        <span class="time">
                                <i class="bi bi-watch"></i>
                                <span> 1h</span>
@@ -63,28 +171,30 @@
                                                        
                  </div>
          </div>
+
          <div class="postIcons" style="clip-path: url('#clipping2')">
                  
                  <div #lk>
-                     <span class="num">{{post.likes}}</span>
-                     <i  (click)='like(lk)' class="bi bi-hand-thumbs-up"></i>
+                     <span class="num">{{post.like.likes}}</span>
+                     <i (click)="like_unlike()" [ngClass]="{'text-light': !post.like.isLiked, 'text-primary': post.like.isLiked}" class="bi bi-hand-thumbs-up"></i>
                  </div>
                  <div>
-                     <span class="num">{{post.comments.num}}</span>
                      <i (click)='showComment(post.id)'class="bi bi-chat-fill"></i>
                  </div>
                  <div #sh>
-                     <span  class="num">{{post.shares}}</span>
-                     <i  (click)='share(sh)' class="bi bi-share"></i>
+                     <span  class="num">{{post.share.shares}}</span>
+                     <i (click)="share()" [ngClass]="{'text-light': !post.share.isShared, 'text-success': post.share.isShared}" class="bi bi-share"></i>
                  </div>
-                 
          </div>
+
          <div style="width: 616px">
-          <app-add-comments [postID]="post.id" ></app-add-comments>
+          <app-add-comments [post]="post" ></app-add-comments>
          </div>
         
     </div>      
   </div>
+
+
     <svg width='0' height='0'>
       <defs>
         <clipPath id="clipping2">
@@ -101,4 +211,4 @@
       </defs>
     </svg>
  
-
+ -->

@@ -1,19 +1,83 @@
-<div class="mainDiv">
-    <div class="rightDiv">
-            <div [class]="{hideElement:!workout.workout.profile}" class="workoutProfile">
-                <img class="atheletImage" [src]="workoutProfile.image" >
-                <h6>{{workoutProfile.first_name+" "+workoutProfile.last_name}}</h6>
+<div class="container ml-1">
+    <div (click)="goToProfile(workout.poster.id)" class="row border w-100 mt-2 p-2" style="background-color: rgba(0, 0, 0, 0.842);">
+        <img class="rounded-circle" [src]="workout.poster_data.image" style="width: 15%; border: solid 1px #0dc8ee;">
+        <span class="my-auto ml-3" style="font-size: xx-large; color: white;">{{workout.poster_data.name}}</span>
+    </div>
+    <div class="row my-2 border w-100 p-2" style="background-color: rgba(0, 0, 0, 0.808); color: white;">
+        <div class="col-12 col-md-6">
+            <h5>Title:</h5>
+            <p class="ml-4 text-wrap" style="font-size: xx-large; word-wrap: break-word;">{{workout.title}}</p>
+        </div>
+        <div class="col-12 col-md-6" >
+            <h5 > Description:</h5>
+            <p class="ml-4">{{workout.description}}</p> 
+        </div>
+    </div>
+    <h1 class="text-center row w-100" style="background-color: rgba(255, 255, 255, 0.836); color: black; font-size: xx-large;">Exercises</h1>
+    <div class="row my-2 p-2 border w-100" style="background-color: rgba(0, 0, 0, 0.842);; color: white;">
+        <div class="d-flex justify-content-center"><h2>{{workout.exercises[currentExercise].title}}</h2></div>
+        <div class="container border my-1 p-1">{{workout.exercises[currentExercise].description}}</div>
+        <div class="row container">
+            <div class="col-12 col-md-4 row">
+                <div class="col-sm-4 col-md-12">
+                    <label >Num of Sets:</label>
+                    <p>{{workout.exercises[currentExercise].num_of_sets}}</p>
+                </div>
+                <div class="col-sm-4 col-md-12">
+                    <label >Set's Duration:</label>
+                    <p>{{workout.exercises[currentExercise].set_duration}}</p>
+                </div>
+                <div class="col-sm-4 col-md-12">
+                    <label >Rest's Duration:</label>
+                    <p>{{workout.exercises[currentExercise].rest_duration}}</p>
+                </div>
             </div>
-            <div [class]="{hideElement:workout.workout.profile}" class="workoutProfile">
-                <img class="atheletImage" [src]="workoutTrainer.image" >
-                <h6>{{workoutTrainer.page_name}}</h6>
+            <div class="col-12 col-sm-6 col-md-4">
+                <div [class]="{hideElement:restPeriod}" class="counter" >
+                    <div>
+                        {{counter}}
+                    </div>
+                    <h6>Play Duration</h6>
+                </div>
+                <div [class]="{hideElement:!restPeriod}" class="counter" >
+                        <div>
+                            {{restCounter}}
+                        </div>
+                        <h6>Rest Duration</h6>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-4 text-center">
+                <div class="round m-1">
+                    Round {{currentSet}}
+                </div>
+                <div class="imgGif w-75 h-75 restDurationDiv mx-auto" [class]="{hideElement:!restPeriod}" >Rest Duration</div>
+                <img class="imgGif w-75 mx-auto" [class]="{hideElement:restPeriod}" [src]="workout.exercises[currentExercise].gif" >
+            </div>
+            <div class="col-12 play">
+                <i (click)='previous()' *ngIf="!is_play" class="bi bi-chevron-double-left"></i>
+                <button (click)='play()' *ngIf="!is_play" class="btn btn-primary">play</button>
+                <i (click)='next()' *ngIf="!is_play" class="bi bi-chevron-double-right"></i>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container h-50"><br><br><br><br><br><br><br><br></div>
+
+<!-- <div class="blurDiv"></div> -->
+
+
+<!-- <div class="mainDiv">
+    <div class="rightDiv">
+            <div class="workoutProfile">
+                <img class="atheletImage" [src]="workout.poster_data.image" >
+                <h6>{{workout.poster_data.name}}</h6>
             </div>
             <div class="workoutInfo">
                 <div>
-                    <h5> <label > Title :</label> {{workout.workout.title}}</h5>
+                    <h5> <label > Title :</label> {{workout.title}}</h5>
                     <div >
                         <label > Description :</label>
-                        <div>{{workout.workout.description}}</div> 
+                        <div>{{workout.description}}</div> 
                     </div>
                 </div> 
             </div>
@@ -65,4 +129,4 @@
     </div>
 </div>
 
-<div class="blurDiv"></div>
+<div class="blurDiv"></div> -->
